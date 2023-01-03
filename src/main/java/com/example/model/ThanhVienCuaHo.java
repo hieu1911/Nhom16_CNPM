@@ -1,6 +1,6 @@
-package com.example.nhom16_cnpm;
+package com.example.model;
 
-public class thanh_vien_cua_ho {
+public class ThanhVienCuaHo {
 	private int idNhanhKhau;
 	private int idHoKhau;
 	private String quanHeVoiChuHo;

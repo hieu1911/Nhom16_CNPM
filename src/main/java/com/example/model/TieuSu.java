@@ -1,8 +1,8 @@
-package com.example.nhom16_cnpm;
+package com.example.model;
 
 import java.util.Date;
 
-public class tieu_su {
+public class TieuSu {
 	private int ID;
 	private int idNhanKhau;
 	private Date tuNgay;
