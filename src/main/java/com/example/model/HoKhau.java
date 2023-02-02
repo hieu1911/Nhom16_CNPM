@@ -10,6 +10,9 @@ public class HoKhau {
     private String maKhuVuc;
     private String diaChi;
     private Date ngayLap;
+    private Date ngayChuyenDi;
+    private String lyDoChuyenDi;
+    private int nguoiThucHien;
 
     public int getID() {
         return ID;
@@ -82,9 +85,4 @@ public class HoKhau {
     public void setNguoiThucHien(int nguoiThucHien) {
         this.nguoiThucHien = nguoiThucHien;
     }
-
-    private Date ngayChuyenDi;
-    private String lyDoChuyenDi;
-    private int nguoiThucHien;
-
 }

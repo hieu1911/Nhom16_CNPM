@@ -3,16 +3,23 @@ package com.example.main;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class QuanLyNhanKhau extends Application {
+
+    public static Stage window;
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        window = stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("login-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
+        stage.getIcons().add(new Image(Objects.requireNonNull(QuanLyNhanKhau.class.getResourceAsStream("/image/logo.png"))));
+        stage.setTitle("Quản lý nhân khẩu");
         stage.setScene(scene);
         stage.show();
     }

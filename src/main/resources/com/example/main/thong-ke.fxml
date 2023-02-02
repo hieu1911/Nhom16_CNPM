@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.controller.ThongKeController">
+    <VBox style="-fx-background-color: #b6b6b6;" spacing="28">
+        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denTrangChu">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/order.png"/>
+            </ImageView>
+            <Text text="Trang Chủ"
+                  style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denNhanKhau">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/man.png"/>
+            </ImageView>
+            <Text text="Nhân Khẩu" style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denHoKhau">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/house.png"/>
+            </ImageView>
+            <Text text="Hộ Khẩu" style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+        <HBox spacing="12" style="-fx-background-color: linear-gradient(to right, #25a6de, #4382eb); -fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denThongKe">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/analysis.png"/>
+            </ImageView>
+            <Text text="Thống Kê" style=" -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: white"/>
+        </HBox>
+        <HBox spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand" onMouseClicked="#denPhanAnh">
+            <ImageView fitWidth="40" fitHeight="40">
+                <Image url="@../../../image/conversation.png"/>
+            </ImageView>
+            <Text text="Phản Ánh" style=" -fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+</HBox>
