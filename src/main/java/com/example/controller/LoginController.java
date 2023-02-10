@@ -1,17 +1,8 @@
 package com.example.controller;
 
-
 import com.example.main.QuanLyNhanKhau;
-
 import com.example.model.User;
-
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import com.example.controller.service.MySqlConnection;
+import com.example.services.MySqlConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,9 +11,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 
 public class LoginController {
-	public AnchorPane warning;
+    @FMXL
+    public AnchorPane warning;
+
     @FXML
     private TextField userName;
     @FXML
@@ -30,8 +29,9 @@ public class LoginController {
 
     public static User currentUser = new User();
 
-    public boolean checkUser(String userName, String password) throws SQLException, ClassNotFoundException {
-        Connection connection = MySqlConnection.getMysqlConnection();
+    public boolean checkUser(String userName, String password) throws SQLException {
+        Connection connection = MySqlConnection.getMySqlConnection();
+
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery("SELECT * FROM users WHERE userName = '" + userName +"'");
 
@@ -51,7 +51,8 @@ public class LoginController {
         return false;
     }
 
-    public void login() throws SQLException, IOException, ClassNotFoundException {
+    public void login() throws SQLException, IOException {
+
         if (checkUser(userName.getText().trim(), password.getText().trim())) {
             FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("trang-chu.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
