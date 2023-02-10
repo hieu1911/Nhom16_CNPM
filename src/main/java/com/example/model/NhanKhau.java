@@ -11,6 +11,7 @@ public class NhanKhau {
     private String gioiTinh;
     private String noiSinh;
     private String nguyenQuan;
+    private String soCMT;
     private String danToc;
     private String tonGiao;
     private String quocTich;
@@ -36,7 +37,12 @@ public class NhanKhau {
     private String lyDoXoa;
     private String ghiChu;
 
-    public int getID() {
+    
+    public NhanKhau() {
+    	
+	}
+
+	public int getID() {
         return ID;
     }
 
@@ -47,8 +53,17 @@ public class NhanKhau {
     public String getMaNhanKhau() {
         return maNhanKhau;
     }
+    
+    
+    public String getSoCMT() {
+		return soCMT;
+	}
 
-    public void setMaNhanKhau(String maNhanKhau) {
+	public void setSoCMT(String soCMT) {
+		this.soCMT = soCMT;
+	}
+
+	public void setMaNhanKhau(String maNhanKhau) {
         this.maNhanKhau = maNhanKhau;
     }
 
@@ -92,7 +107,7 @@ public class NhanKhau {
         this.noiSinh = noiSinh;
     }
 
-    public String getNguyenQuan() {
+	public String getNguyenQuan() {
         return nguyenQuan;
     }
 
