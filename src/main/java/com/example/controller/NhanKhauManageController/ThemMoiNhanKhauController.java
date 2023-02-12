@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 import java.util.Date;
 
 import com.example.services.NhanKhauService;
+import com.example.main.QuanLyNhanKhau;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

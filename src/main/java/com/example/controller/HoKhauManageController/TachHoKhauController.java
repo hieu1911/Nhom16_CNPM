@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import com.example.main.QuanLyNhanKhau;
+
 import com.example.controller.Controller;
 import com.example.services.HoKhauService;
 import com.example.model.HoKhau;

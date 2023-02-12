@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.example.services.HoKhauService;
+import com.example.main.QuanLyNhanKhau;
+import com.example.model.HoKhau;
+
 import com.example.controller.Controller;
 
 import javafx.event.ActionEvent;
