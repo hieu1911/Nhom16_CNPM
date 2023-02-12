@@ -10,19 +10,18 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author Doan Van Hieu 20204549
- */
 
 public class LoginController {
+    @FXML
     public AnchorPane warning;
+
     @FXML
     private TextField userName;
     @FXML
@@ -32,6 +31,7 @@ public class LoginController {
 
     public boolean checkUser(String userName, String password) throws SQLException {
         Connection connection = MySqlConnection.getMySqlConnection();
+
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery("SELECT * FROM users WHERE userName = '" + userName +"'");
 
@@ -52,6 +52,7 @@ public class LoginController {
     }
 
     public void login() throws SQLException, IOException {
+
         if (checkUser(userName.getText().trim(), password.getText().trim())) {
             FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("trang-chu.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1200, 600);

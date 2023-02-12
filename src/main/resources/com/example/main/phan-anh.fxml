@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="432.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.PhanAnhController">
+<BorderPane prefHeight="432.0" prefWidth="958.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.controller.PhanAnhController">
    <left>
        <VBox spacing="28" style="-fx-background-color: #b6b6b6;" BorderPane.alignment="CENTER">
          <Button fx:id="trangChuBt" mnemonicParsing="false" onAction="#denTrangChu">

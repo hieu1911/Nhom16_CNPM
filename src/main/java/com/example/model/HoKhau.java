@@ -7,6 +7,7 @@ public class HoKhau {
     private int ID;
     private String maHoKhau;
     private int idChuHo;
+    private String hoTenChuHo;
     private String maKhuVuc;
     private String diaChi;
     private Date ngayLap;
@@ -85,4 +86,12 @@ public class HoKhau {
     public void setNguoiThucHien(int nguoiThucHien) {
         this.nguoiThucHien = nguoiThucHien;
     }
+
+	public String getHoTenChuHo() {
+		return hoTenChuHo;
+	}
+
+	public void setHoTenChuHo(String hoTenChuHo) {
+		this.hoTenChuHo = hoTenChuHo;
+	}
 }
