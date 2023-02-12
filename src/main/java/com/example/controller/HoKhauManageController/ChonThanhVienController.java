@@ -1,5 +1,7 @@
 package com.example.controller.HoKhauManageController;
 
+import java.io.IOException;
+
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,7 +9,6 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import com.example.controller.service.HoKhauService;
 import com.example.controller.service.NhanKhauService;
 import com.example.model.NhanKhau;
 import com.example.model.ThanhVienCuaHo;
@@ -17,16 +18,23 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-public class ChonThanhVienController extends ThemMoiHoKhauController  implements Initializable {
+public class ChonThanhVienController   implements Initializable {
 	@FXML
     private Button themThanhVienBt;
     @FXML
@@ -64,11 +72,9 @@ public class ChonThanhVienController extends ThemMoiHoKhauController  implements
     private int idNhanKhau;
     private String hoTen;
     private Date namSinh;
-    private String quanHeVoiChuHo;
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
     	
     	nhanKhauList = FXCollections.observableArrayList(
 				
@@ -80,26 +86,23 @@ public class ChonThanhVienController extends ThemMoiHoKhauController  implements
 		diaChiHienNayCol.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("diaChiHienNay"));
 		nhanKhauTv.setItems(nhanKhauList);
 		showInforNhanKhau();
-		// chooseThanhVien : chọn nhan khau chưa có trong hộ khẩu nào
+		
 		nhanKhauTv.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
             @Override
             public void handle(MouseEvent event) {
 				 int id = nhanKhauTv.getSelectionModel().getSelectedItem().getID();
-				 
-				 
+
 				 NhanKhauService conn = new NhanKhauService();
 				 if (conn.checkPerson(id)) {
 					 checkPerson = true;
-					 System.out.println("co the chộn đuọccư");
 					 idNhanKhau = id;
 					 hoTen = nhanKhauTv.getSelectionModel().getSelectedItem().getHoTen();
 					 namSinh = nhanKhauTv.getSelectionModel().getSelectedItem().getNamSinh();
-//					 quanHeVoiChuHo = nhanKhauTv.getSelectionModel().getSelectedItem().;
-					 
 				 } else {
-					 // hiện thông báo không chọn được
-					 System.out.println("khong chon duọc");
+			    	 Alert alert = new Alert(AlertType.WARNING);
+			    	 alert.setTitle("Warning Dialog");
+			    	 alert.setContentText("Nhân khẩu đã nằm trong hộ mới");
+			    	 alert.showAndWait();
 				 }
 			}
 		});
@@ -111,8 +114,12 @@ public class ChonThanhVienController extends ThemMoiHoKhauController  implements
     	ngaySinhTVCol.setCellValueFactory(new PropertyValueFactory<ThanhVienCuaHo, Date>("namSinh"));
     	quanHeVoiChuHoTVCol.setCellValueFactory(new PropertyValueFactory<ThanhVienCuaHo, String>("quanHeVoiChuHo"));
     	thanhVienCuaHoTv.setItems(thanhVienCuaHoList);
-    	
-		    	
+    	thanhVienCuaHoTv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    		@Override
+			public void handle(MouseEvent event) {
+				idNhanKhau = thanhVienCuaHoTv.getSelectionModel().getSelectedItem().getIdNhanhKhau();
+			}		
+    	});	    	
 	}
     
     public void showInforNhanKhau() {
@@ -135,10 +142,7 @@ public class ChonThanhVienController extends ThemMoiHoKhauController  implements
 			e.printStackTrace();
 		}
     }
-    @FXML
-    void luuThayDoi(ActionEvent event) {
-
-    }
+    
 
     @FXML
     void themThanhVien(ActionEvent event) throws SQLException {
@@ -164,9 +168,28 @@ public class ChonThanhVienController extends ThemMoiHoKhauController  implements
 
     @FXML
     void xoaThanhVien(ActionEvent event) {
-
+    	for (ThanhVienCuaHo i : thanhVienCuaHoList) {
+    		if (idNhanKhau == i.getIdNhanhKhau()) {
+    			thanhVienCuaHoList.remove(i);
+    			break;
+    		}
+    	}
     }
 
-	
+    @FXML
+    void luuThayDoi(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hokhaumanage/them-moi-ho-khau.fxml"));	
+		Parent root = loader.load();	
+    	ThemMoiHoKhauController themHoKhau = loader.getController();
+    	DataHoKhauMoi.thanhVienCuaHoList = thanhVienCuaHoList;
+    	themHoKhau.setThongTinChuHo();	
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.getOwner().hide();
+		Scene scene = new Scene(root);
+		stage.setTitle("Thêm mới hộ khẩu");
+		stage.setScene(scene);
+		stage.show();
+    }
 
 }

@@ -1,14 +1,13 @@
 package com.example.controller;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import com.example.controller.HoKhauManageController.ThemMoiHoKhauController;
 import com.example.controller.service.HoKhauService;
-import com.example.main.QuanLyNhanKhau;
 import com.example.model.HoKhau;
 
 import javafx.collections.FXCollections;
@@ -89,7 +88,8 @@ public class HoKhauController extends Controller implements Initializable {
     	super.denPhanAnh();
     }
 	
-    public void themMoiHoKhau(ActionEvent event) throws IOException {
+    @SuppressWarnings("exports")
+	public void themMoiHoKhau(ActionEvent event) throws IOException {
     	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();			
 		loader.setLocation(getClass().getResource("/com/example/hokhaumanage/them-moi-ho-khau.fxml"));			
@@ -102,16 +102,10 @@ public class HoKhauController extends Controller implements Initializable {
         Scene scene = new Scene(root);	
 		modal_dialog.setScene(scene);
 		modal_dialog.show();
-//    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/main/them-moi-ho-khau.fxml"));	
-//		root = loader.load();	
-//        Node node = (Node) event.getSource();
-//        stage = (Stage) node.getScene().getWindow();
-//		scene = new Scene(root);
-//		stage.setScene(scene);
-//		stage.show();
     }
     
-    public void tachHoKhau(ActionEvent event) throws IOException {
+    @SuppressWarnings("exports")
+	public void tachHoKhau(ActionEvent event) throws IOException {
     	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();			
 		loader.setLocation(getClass().getResource("/com/example/hokhaumanage/tach-ho-khau.fxml"));			
@@ -126,7 +120,8 @@ public class HoKhauController extends Controller implements Initializable {
 		modal_dialog.show();
     }
     
-    public void chuyenDi(ActionEvent event) throws IOException {
+    @SuppressWarnings("exports")
+	public void chuyenDi(ActionEvent event) throws IOException {
     	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();			
 		loader.setLocation(getClass().getResource("/com/example/hokhaumanage/chuyen-di.fxml"));			

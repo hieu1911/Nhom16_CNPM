@@ -19,7 +19,8 @@ import java.sql.Statement;
 
 
 public class LoginController {
-    @FMXL
+
+    @FXML
     public AnchorPane warning;
 
     @FXML

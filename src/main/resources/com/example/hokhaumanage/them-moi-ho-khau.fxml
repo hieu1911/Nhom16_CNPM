@@ -45,8 +45,8 @@
 						<TextField fx:id="maHoKhauTf" GridPane.columnIndex="1" />
 						<TextField fx:id="diaChiTf" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 						<TextField fx:id="maKhuVucTf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-						<TextField fx:id="chuHoTf" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-						<TextField fx:id="soCMTTf" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+						<TextField fx:id="chuHoTf" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+						<TextField fx:id="soCMTTf" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 						<Label text="Địa chỉ" GridPane.rowIndex="2" />
 						<Label text="(*)" textFill="RED" GridPane.columnIndex="2" />
 						<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1" />
@@ -54,7 +54,7 @@
 						<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 						<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="4" />
 						<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <TextField fx:id="ngaySinhChuHoTf" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="ngaySinhChuHoTf" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 					</children>
 				</GridPane>
 				<Label text="Thành viên của hộ" />

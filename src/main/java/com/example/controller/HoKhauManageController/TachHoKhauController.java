@@ -5,11 +5,11 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
-import com.example.controller.Controller;
 import com.example.controller.service.HoKhauService;
-import com.example.controller.service.NhanKhauService;
+import com.example.main.QuanLyNhanKhau;
 import com.example.model.HoKhau;
 import com.example.model.ThanhVienCuaHo;
 
@@ -18,15 +18,20 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class TachHoKhauController extends Controller implements Initializable {
+public class TachHoKhauController  implements Initializable {
 	
 	@FXML
     private TextField maHoKhauTf;
@@ -82,7 +87,12 @@ public class TachHoKhauController extends Controller implements Initializable {
     private Button huyBoBt;    
     
     private int idChuHo;
-    private int idNhanKhau1;
+    private int idNhanKhau;
+    private int idChuHoMoi;
+    private String hoTen1;
+    private Date namSinh1;
+    private String hoTen2;
+    
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -95,7 +105,7 @@ public class TachHoKhauController extends Controller implements Initializable {
     	chonHoCanTachTv.setItems(hoKhauCanTachList);
     	showInfor();
     	
-    	//chưa sửa
+    	
     	chonHoCanTachTv.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
             @Override
@@ -116,14 +126,12 @@ public class TachHoKhauController extends Controller implements Initializable {
     	quanHeVoiChuHo1Col.setCellValueFactory(new PropertyValueFactory<ThanhVienCuaHo, String>("quanHeVoiChuHo"));
     	nhanKhau1Tv.setItems(nhanKhauList1);
     	nhanKhau1Tv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
 			@Override
 			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				idNhanKhau1 = nhanKhau1Tv.getSelectionModel().getSelectedItem().getIdHoKhau();
-				System.out.println("da lay dc id nhan khau " + idNhanKhau1);
+				hoTen1 = nhanKhau1Tv.getSelectionModel().getSelectedItem().getHoTen();
+				namSinh1 = nhanKhau1Tv.getSelectionModel().getSelectedItem().getNamSinh();
+				idNhanKhau = nhanKhau1Tv.getSelectionModel().getSelectedItem().getIdNhanhKhau();
 			}
-    		
     	});
     	
     	
@@ -134,6 +142,13 @@ public class TachHoKhauController extends Controller implements Initializable {
     	ngaySinh2Col.setCellValueFactory(new PropertyValueFactory<ThanhVienCuaHo, Date>("namSinh"));
     	quanHeVoiChuHo2Col.setCellValueFactory(new PropertyValueFactory<ThanhVienCuaHo, String>("quanHeVoiChuHo"));
     	nhanKhau2Tv.setItems(nhanKhauList2);
+    	nhanKhau2Tv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				hoTen2 = nhanKhau2Tv.getSelectionModel().getSelectedItem().getHoTen();
+			}
+    	});
+    	
 	}
     
     private void showInfor() {
@@ -180,16 +195,85 @@ public class TachHoKhauController extends Controller implements Initializable {
     
     @FXML
     void themNguoi(ActionEvent event) {
+    	boolean isInHoMoi = false;
+    	// duyệt qua danh sách thành viên trong hộ mới, nếu nhân khẩu ddang trỏ có thì isInHoMoi = true
+    	for (ThanhVienCuaHo i : nhanKhauList2) {
+    		if (hoTen1.equals(i.getHoTen())) {
+    			isInHoMoi = true;
+    		}
+    	}
+    	
+    	// nếu là chủ hộ mới thì isInHoMoi = true
+    	if (hoTen1.equals(chuHoMoiTf.getText()))
+    		isInHoMoi = true;
+    	
+    	if (isInHoMoi) {
+    		Alert alert = new Alert(AlertType.WARNING);
+    		alert.setTitle("Warning Dialog");
+    		alert.setHeaderText(null);
+    		alert.setContentText("Nhân khẩu đã nằm trong hộ mới");
 
+    		alert.showAndWait();
+    	} else {
+	    	TextInputDialog dialog = new TextInputDialog("");
+			dialog.setTitle("Quan he voi chu ho");
+			dialog.setHeaderText("Look, a Text Input Dialog");
+			dialog.setContentText("Nhập quan hệ với chủ hộ: ");
+	
+			// Traditional way to get the response value.
+			Optional<String> result = dialog.showAndWait();
+			if (result.isPresent()) {
+				if (result.get().equals("Chủ hộ")) {
+					chuHoMoiTf.setText(hoTen1);
+					idChuHoMoi = idNhanKhau;
+				} else {
+					ThanhVienCuaHo tvch = new ThanhVienCuaHo();
+					tvch.setHoTen(hoTen1);
+					tvch.setNamSinh(namSinh1);
+					tvch.setQuanHeVoiChuHo(result.get());
+					nhanKhauList2.add(tvch);
+				}
+			}
+    	}
+		
     }
     @FXML
     void xoaNguoi(ActionEvent event) {
-
+    	for (ThanhVienCuaHo i : nhanKhauList2) {
+    		if (hoTen2.equals(i.getHoTen())) {
+    			nhanKhauList2.remove(i);
+    			break;
+    		}
+    	}
     }
     
     @FXML
-    void xacNhan(ActionEvent event) {
-
+    void xacNhan(ActionEvent event) throws IOException {
+    	if (maKhuVucTf.getText().trim().isEmpty() 
+                || diaChiTf.getText().trim().isEmpty() 
+                || maHoKhauMoiTf.getText().trim().isEmpty() 
+                || chuHoMoiTf.getText().trim().isEmpty()) {
+    		Alert alert = new Alert(Alert.AlertType.WARNING);
+    		alert.setTitle("cảnh báo");
+    		alert.setContentText("Vui lòng nhập hết các trường bắt buộc");
+    		alert.showAndWait();
+    	} else {
+    		DataHoKhauMoi.hoTenChuHo = chuHoMoiTf.getText();
+    		DataHoKhauMoi.diaChi = diaChiTf.getText();
+    		DataHoKhauMoi.maHoKhau = maHoKhauMoiTf.getText();
+    		DataHoKhauMoi.maKhuVuc = maKhuVucTf.getText();
+    		DataHoKhauMoi.ngaySinh = null;
+    		DataHoKhauMoi.idChuHo = idChuHoMoi;
+    		DataHoKhauMoi.soCMT = null;
+    		DataHoKhauMoi.thanhVienCuaHoList = nhanKhauList2;
+    		HoKhauService hks = new HoKhauService();
+    		hks.tachHoKhau(nhanKhauList2, idChuHoMoi);
+    		xacNhanBt.getScene().getWindow().hide();
+    		//chuyển trang
+    		FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("ho-khau.fxml"));
+	        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+	        QuanLyNhanKhau.window.setScene(scene);
+    	}
     }
     @FXML
     void huyBo(ActionEvent event) {
