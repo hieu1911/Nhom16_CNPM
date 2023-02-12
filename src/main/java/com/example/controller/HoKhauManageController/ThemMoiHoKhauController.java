@@ -3,13 +3,15 @@ package com.example.controller.HoKhauManageController;
 import java.io.IOException;
 
 
-
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import com.example.services.HoKhauService;
 import com.example.main.QuanLyNhanKhau;
+import com.example.controller.Controller;
+import com.example.services.HoKhauService;
 import com.example.model.ThanhVienCuaHo;
 
 import javafx.collections.FXCollections;
@@ -21,7 +23,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,7 +32,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class ThemMoiHoKhauController  implements Initializable {
+public class ThemMoiHoKhauController extends Controller implements Initializable {
 
     @FXML
     private Button chonChuHoBt;
@@ -44,8 +45,6 @@ public class ThemMoiHoKhauController  implements Initializable {
     @FXML
     private TextField maHoKhauTf;
     @FXML
-    private TextField maKhuVucTf;
-    @FXML
     private TextField ngaySinhChuHoTf;
     @FXML
     protected TextField soCMTTf;
@@ -53,7 +52,8 @@ public class ThemMoiHoKhauController  implements Initializable {
     private Button huyBoBt;
     @FXML
     private Button taoBt;
-    
+    @FXML
+    private TextField maKhuVucTf;
     @FXML
     private TableView<ThanhVienCuaHo> thanhVienTv;
     @FXML
@@ -75,10 +75,30 @@ public class ThemMoiHoKhauController  implements Initializable {
     	quanHeCol.setCellValueFactory(new PropertyValueFactory<ThanhVienCuaHo, String>("quanHeVoiChuHo"));
     	thanhVienTv.setItems(thanhVienList);
 	}
+    
+    private void showInfor() {
+    	HoKhauService conn = new HoKhauService();
+		ResultSet rs = conn.getThanhVien();
+		try {
+			if (rs != null) {
+				while (rs.next()) {
+					ThanhVienCuaHo tvch = new ThanhVienCuaHo();
+					tvch.setHoTen(rs.getString("hoTen"));
+					tvch.setNamSinh(rs.getDate("namSinh"));
+					tvch.setQuanHeVoiChuHo(rs.getString("quanHeVoiChuHo"));
+					thanhVienList.add(tvch);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	@FXML
     void chonChuHo(ActionEvent event) throws IOException {
-		luuThongTin();
+		
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();			
 		loader.setLocation(getClass().getResource("/com/example/hokhaumanage/chon-chu-ho.fxml"));			
@@ -92,10 +112,16 @@ public class ThemMoiHoKhauController  implements Initializable {
 		modal_dialog.setScene(scene);
 		modal_dialog.show();
     }
+	
+	public void setThongTinChuHo(String hoTen, Date ngaySinh, String soCMT) { 
+		chuHoTf.setText(hoTen);
+//		LocalDate date = ngaySinh.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//		ngaySinhChuHoDpk.setValue(date);
+		soCMTTf.setText(soCMT);
+	}
 
     @FXML
     void chonThanhVien(ActionEvent event) throws IOException {
-    	luuThongTin();
     	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();			
 		loader.setLocation(getClass().getResource("/com/example/hokhaumanage/chon-thanh-vien.fxml"));			
@@ -110,24 +136,29 @@ public class ThemMoiHoKhauController  implements Initializable {
 		modal_dialog.show();
     }
 
-    public void luuThongTin() {
-    	DataHoKhauMoi.hoTenChuHo = chuHoTf.getText();
-    	DataHoKhauMoi.ngaySinh = ngaySinhChuHoTf.getText();
-    	DataHoKhauMoi.soCMT = soCMTTf.getText();
-    	DataHoKhauMoi.diaChi = diaChiTf.getText();
-    	DataHoKhauMoi.maHoKhau = maHoKhauTf.getText();
-    	DataHoKhauMoi.maKhuVuc = maKhuVucTf.getText();
-    	DataHoKhauMoi.thanhVienCuaHoList = thanhVienList;
-    }
     
-    public void setThongTinChuHo() { 
-		chuHoTf.setText(DataHoKhauMoi.hoTenChuHo);
-		ngaySinhChuHoTf.setText(DataHoKhauMoi.ngaySinh);
-		soCMTTf.setText(DataHoKhauMoi.soCMT);
-		diaChiTf.setText(DataHoKhauMoi.diaChi);
-		maHoKhauTf.setText(DataHoKhauMoi.maHoKhau);
-		maKhuVucTf.setText(DataHoKhauMoi.maKhuVuc);
-		thanhVienList.addAll(DataHoKhauMoi.thanhVienCuaHoList);
+    
+    public String getChuHoTf() {
+		return chuHoTf.getText();
+	}
+
+	public void setChuHoTf(String chuHo) {
+		chuHoTf.setText("sao khong đổi");
+		System.out.println("dong nay chay trong them moi controller");
+	}
+
+	
+
+	public void setNgaySinhChuHoTf(Date ngaySinhChuHo) {
+		ngaySinhChuHoTf.setText(ngaySinhChuHo.toString());
+	}
+
+	public String getSoCMTTf() {
+		return soCMTTf.getText();
+	}
+
+	public void setSoCMTTf(String soCMT) {
+		soCMTTf.setText("so cmt da duoc đổi");
 	}
 
 	@FXML
@@ -136,25 +167,8 @@ public class ThemMoiHoKhauController  implements Initializable {
     }
 
     @FXML
-    void tao(ActionEvent event) throws IOException {
-    	if (chuHoTf.getText().trim().isEmpty() || diaChiTf.getText().trim().isEmpty() 
-    			|| maHoKhauTf.getText().trim().isEmpty()|| ngaySinhChuHoTf.getText().trim().isEmpty()
-    			|| maKhuVucTf.getText().trim().isEmpty()|| soCMTTf.getText().trim().isEmpty()
-    			|| thanhVienList.isEmpty()) {
-    		Alert alert = new Alert(Alert.AlertType.WARNING);
-    		alert.setTitle("cảnh báo");
-    		alert.setContentText("Vui lòng nhập hết các trường bắt buộc");
-    		alert.showAndWait();
-    	} else {	    	
-			HoKhauService hoKhau = new HoKhauService();
-	    	hoKhau.insertHoKhauMoi();
-	    	taoBt.getScene().getWindow().hide();
-			FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("ho-khau.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
-	        QuanLyNhanKhau.window.setScene(scene);
-			
-    	}
-    	
+    void tao(ActionEvent event) {
+
     }
 
 	

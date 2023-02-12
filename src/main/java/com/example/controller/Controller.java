@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
-public class Controller {
+public abstract class Controller {
 
     public void denTrangChu() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("trang-chu.fxml"));
@@ -37,5 +37,4 @@ public class Controller {
         Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
         QuanLyNhanKhau.window.setScene(scene);
     }
-
 }

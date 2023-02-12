@@ -167,11 +167,5 @@ public class NhanKhauController extends Controller implements Initializable{
 		modal_dialog.setScene(scene);
 		modal_dialog.show();
     }
-
-    
-	
-	
-	
-	
 }
 

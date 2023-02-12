@@ -10,11 +10,13 @@ import com.example.controller.LoginController;
 import com.example.controller.HoKhauManageController.DataHoKhauMoi;
 import com.example.model.ThanhVienCuaHo;
 
+
 public class HoKhauService {
 	public ResultSet rs = null;
 	
 	public ResultSet getHoKhau() {
 		String query = "SELECT ho_khau.idChuHo, maHoKhau, nhan_khau.hoTen, ho_khau.diaChi, ho_khau.maKhuVuc FROM ho_khau, nhan_khau where ho_khau.idChuHo = nhan_khau.ID ";
+
 		return resultSet(query);
 	}
 	
@@ -43,6 +45,7 @@ public class HoKhauService {
 	public ResultSet resultSet (String query) {
 		try {
 			Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
+
 	    	Statement stmt  = connection.createStatement();
 	    	rs    = stmt.executeQuery(query);
 	    	
@@ -144,13 +147,4 @@ public class HoKhauService {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
+}
