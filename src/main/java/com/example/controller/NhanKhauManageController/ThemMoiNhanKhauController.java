@@ -93,7 +93,7 @@ public class ThemMoiNhanKhauController implements Initializable {
     		Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
     		Date date1 = Date.from(instant);
     		java.sql.Date dateSql = new java.sql.Date(date1.getTime());
-    		nks.insertNhanKhau(Integer.valueOf(soCMTTf.getText()), hoTenTf.getText(), bietDanhTf.getText(), dateSql,  gioiTinhCb.getValue(), noiSinhTf.getText(), nguyenqQuanTf.getText(), 
+    		nks.insertNhanKhau(soCMTTf.getText(), hoTenTf.getText(), bietDanhTf.getText(), dateSql,  gioiTinhCb.getValue(), noiSinhTf.getText(), nguyenqQuanTf.getText(),
     				danTocTf.getText(), tonGiaoTf.getText(), quocTichTf.getText(), hoChieuSoTf.getText(), noiThuongTruTf.getText(), diaChiHienNayTf.getText(), 
     				trinhDoHocVanTf.getText(), trinhDoChuyenMonTf.getText(), bietTiengDanTocTf.getText(), trinhDoNgoaiNguTf.getText(), ngheNghiepTf.getText(), noiLamViecTf.getText());
     	}

@@ -6,9 +6,9 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-import com.example.controller.service.NhanKhauService;
 import com.example.model.KhaiTu;
 
+import com.example.services.NhanKhauService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
