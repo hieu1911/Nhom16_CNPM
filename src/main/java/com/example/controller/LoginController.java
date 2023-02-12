@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 
 
 public class LoginController {
+	@SuppressWarnings("exports")
 	public AnchorPane warning;
     @FXML
     private TextField userName;
