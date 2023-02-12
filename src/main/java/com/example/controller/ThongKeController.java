@@ -174,4 +174,5 @@ public class ThongKeController extends Controller implements Initializable {
 
         nhanKhauTable.setItems(nhanKhauList);
     }
+
 }
