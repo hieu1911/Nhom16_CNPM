@@ -1,4 +1,4 @@
-package com.example.controller.service;
+package com.example.services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,13 +42,10 @@ public class HoKhauService {
 	
 	public ResultSet resultSet (String query) {
 		try {
-			Connection connection = MySqlConnection.getMysqlConnection();
+			Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
 	    	Statement stmt  = connection.createStatement();
 	    	rs    = stmt.executeQuery(query);
 	    	
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,7 +55,7 @@ public class HoKhauService {
 	
 	public void insertHoKhauMoi () {
 		try {
-			Connection connection = MySqlConnection.getMysqlConnection();
+			Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
 			String query = "INSERT INTO ho_khau(maHoKhau, idChuHo, maKhuVuc, diaChi, ngayLap)" 
                     + " values (?, ?, ?, ?, NOW())";
 			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);			
@@ -87,7 +84,7 @@ public class HoKhauService {
 	        }
 	        preparedStatement.close();
 	        connection.close();
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
@@ -99,7 +96,7 @@ public class HoKhauService {
 		String query2 = "DELETE FROM thanh_vien_cua_ho WHERE idNhanKhau = " + idChuHoMoi;
 		
 		try {
-            Connection connection = MySqlConnection.getMysqlConnection();
+            Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
 //            PreparedStatement preparedStatement = connection.prepareStatement(query);
 //            preparedStatement.executeUpdate();
             PreparedStatement preparedStatement2 = connection.prepareStatement(query2);
@@ -113,7 +110,7 @@ public class HoKhauService {
 //			String sql1 = "Delete from nhan_khau where ID = " + idChuHoMoi;
             String sql2 = "DELETE FROM thanh_vien_cua_ho WHERE idNhanKhau = " + item.getIdNhanhKhau();
             try {
-                Connection connection = MySqlConnection.getMysqlConnection();
+                Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
 //                PreparedStatement preparedStatement = connection.prepareStatement(sql1);
 //                preparedStatement.executeUpdate();
                 PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
@@ -137,7 +134,7 @@ public class HoKhauService {
                 + LoginController.currentUser.getID()
                 + " WHERE ho_khau.ID = " + idhoKhau;
         try {
-            Connection connection = MySqlConnection.getMysqlConnection();
+            Connection connection = MySqlConnection.getMySqlConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
         } catch (Exception e) {

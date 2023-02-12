@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import com.example.controller.service.HoKhauService;
+import com.example.services.HoKhauService;
 import com.example.main.QuanLyNhanKhau;
 import com.example.model.ThanhVienCuaHo;
 

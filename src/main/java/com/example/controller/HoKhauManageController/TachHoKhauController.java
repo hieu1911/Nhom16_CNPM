@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import com.example.controller.service.HoKhauService;
+import com.example.services.HoKhauService;
 import com.example.main.QuanLyNhanKhau;
 import com.example.model.HoKhau;
 import com.example.model.ThanhVienCuaHo;

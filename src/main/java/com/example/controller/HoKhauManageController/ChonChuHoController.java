@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import com.example.controller.service.NhanKhauService;
+import com.example.services.NhanKhauService;
 import com.example.model.NhanKhau;
 
 import javafx.collections.FXCollections;
