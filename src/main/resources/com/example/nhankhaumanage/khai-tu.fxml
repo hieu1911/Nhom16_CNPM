@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,30 +14,63 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.NhanKhauManageController.KhaiTuController">
 	<top>
-		<HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-			<children>
-				<Label text="Số CMT/CCCD:">
-					<font>
-						<Font name="System Bold" size="14.0" />
-					</font>
-					<padding>
-						<Insets right="20.0" />
-					</padding>
-				</Label>
-				<TextField fx:id="soCMTTf" prefHeight="25.0" prefWidth="224.0" />
-				<Label text="(*)" textFill="RED">
-					<padding>
-						<Insets right="20.0" />
-					</padding>
-				</Label>
-				<Button fx:id="checkBt" mnemonicParsing="false" onAction="#check" text="Check" />
-				<ImageView fitHeight="34.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" />
-			</children>
-		</HBox>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+      		<HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="5.0">
+      			<children>
+      				<Label text="Số CMT người khai">
+      					<font>
+      						<Font name="System Bold" size="14.0" />
+      					</font>
+      					<padding>
+      						<Insets right="20.0" />
+      					</padding>
+      				</Label>
+      				<TextField fx:id="soCMTTf" prefHeight="25.0" prefWidth="203.0" />
+      				<Label text="(*)" textFill="RED">
+      					<padding>
+      						<Insets right="20.0" />
+      					</padding>
+      				</Label>
+      				<Button fx:id="checkBt" mnemonicParsing="false" onAction="#check1" text="Check" />
+      				<ImageView fx:id="checkImage" fitHeight="34.0" fitWidth="43.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/checkmark.png" />
+                     </image>
+                  </ImageView>
+      			</children>
+      		</HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="5.0">
+               <children>
+                  <Label text="Số CMT người chết">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="soCMTTf1" prefHeight="25.0" prefWidth="201.0" />
+                  <Label text="(*)" textFill="RED">
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="checkBt1" mnemonicParsing="false" onAction="#check2" text="Check" />
+                  <ImageView fx:id="checkImage1" fitHeight="34.0" fitWidth="43.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/checkmark.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
 	</top>
 	<center>
 		<GridPane prefHeight="275.0" prefWidth="420.0" BorderPane.alignment="TOP_LEFT">
@@ -46,50 +80,42 @@
 				<ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="31.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="119.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="14.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label text="Đã chết lúc:" GridPane.rowIndex="3">
+				<Label text="Ngày khai" GridPane.rowIndex="2">
 					<font>
 						<Font name="System Bold" size="14.0" />
 					</font>
 				</Label>
-				<Label text="Nơi chết:" GridPane.rowIndex="4">
+				<Label text="Lý do:" GridPane.rowIndex="4">
 					<font>
 						<Font name="System Bold" size="14.0" />
 					</font>
 				</Label>
-				<Label text="Lý do:" GridPane.rowIndex="5">
-					<font>
-						<Font name="System Bold" size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="chetLucTf" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-				<TextField fx:id="noiChetTf" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-				<TextArea fx:id="liDoTa" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-				<Label text="Họ tên người chết" GridPane.rowIndex="1">
-					<font>
-						<Font name="System Bold" size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="hoTenNguoiChetTf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-				<Label text="Năm sinh" GridPane.rowIndex="2">
-					<font>
-						<Font name="System Bold" size="14.0" />
-					</font>
-				</Label>
-				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+				<TextArea fx:id="liDoTa" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <DatePicker fx:id="namSinhDpk" prefHeight="25.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+				<Label text="Số giấy khai tử" GridPane.rowIndex="1">
+					<font>
+						<Font name="System Bold" size="14.0" />
+					</font>
+				</Label>
+				<TextField fx:id="soGiayKhaiTuTf" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <DatePicker fx:id="ngayChetDpk" editable="false" prefHeight="25.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Ngày chết" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="ngayKhaiDpk" editable="false" prefHeight="25.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="(*)" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 			</children>
 		</GridPane>
 	</center>
@@ -99,6 +125,9 @@
 				<Button fx:id="huyBoBt" mnemonicParsing="false" onAction="#huyBo" prefHeight="25.0" prefWidth="80.0" text="Hủy bỏ" />
 				<Button fx:id="taoBt" mnemonicParsing="false" onAction="#tao" prefHeight="25.0" prefWidth="80.0" text="Tạo" />
 			</children>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
 		</HBox>
 	</bottom>
 	<left>

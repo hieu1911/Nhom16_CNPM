@@ -57,10 +57,10 @@
 								<Label text="Địa chỉ hiện tại" GridPane.rowIndex="3" />
 								<Label text="Địa chỉ chuyển đến" GridPane.rowIndex="4" />
 								<Label text="Lý do chuyển đi" GridPane.rowIndex="5" />
-								<TextField fx:id="maHoKhauTf" GridPane.columnIndex="1" />
-								<TextField fx:id="tenChuHoTf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-								<TextField fx:id="diaChiHienTaiTf" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-								<TextField fx:id="maKhuVucTf" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+								<TextField fx:id="maHoKhauTf" editable="false" style="-fx-background-color: #c3bbbb;" GridPane.columnIndex="1" />
+								<TextField fx:id="tenChuHoTf" editable="false" style="-fx-background-color: #c3bbbb;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+								<TextField fx:id="diaChiHienTaiTf" editable="false" style="-fx-background-color: #c3bbbb;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+								<TextField fx:id="maKhuVucTf" editable="false" style="-fx-background-color: #c3bbbb;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 								<TextField fx:id="diaChiChuyenDenTf" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 								<TextArea fx:id="liDoChuyenTa" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 								<Label text="(*)" textFill="RED" GridPane.columnIndex="2" />
