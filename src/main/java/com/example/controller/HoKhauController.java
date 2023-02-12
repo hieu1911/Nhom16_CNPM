@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import com.example.controller.HoKhauManageController.ThemMoiHoKhauController;
-import com.example.controller.service.HoKhauService;
-import com.example.main.QuanLyNhanKhau;
+import com.example.services.HoKhauService;
 import com.example.model.HoKhau;
 
 import javafx.collections.FXCollections;

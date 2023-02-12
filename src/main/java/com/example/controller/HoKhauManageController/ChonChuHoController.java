@@ -10,8 +10,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import com.example.controller.service.NhanKhauService;
-import com.example.main.QuanLyNhanKhau;
+import com.example.services.NhanKhauService;
 import com.example.model.NhanKhau;
 
 import javafx.collections.FXCollections;
@@ -19,7 +18,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;

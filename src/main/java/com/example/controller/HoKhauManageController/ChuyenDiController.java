@@ -1,6 +1,8 @@
 package com.example.controller.HoKhauManageController;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.example.controller.Controller;
 
@@ -51,5 +53,4 @@ public class ChuyenDiController extends Controller{
     void xacNhan(ActionEvent event) {
 
     }
-
 }

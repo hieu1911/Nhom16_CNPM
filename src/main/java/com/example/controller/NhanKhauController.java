@@ -7,8 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import com.example.controller.service.NhanKhauService;
-import com.example.main.QuanLyNhanKhau;
+import com.example.services.NhanKhauService;
 import com.example.model.NhanKhau;
 
 import javafx.collections.FXCollections;
@@ -168,11 +167,5 @@ public class NhanKhauController extends Controller implements Initializable{
 		modal_dialog.setScene(scene);
 		modal_dialog.show();
     }
-
-    
-	
-	
-	
-	
 }
 

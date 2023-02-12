@@ -1,6 +1,5 @@
 package com.example.controller.HoKhauManageController;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,8 +7,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.example.controller.Controller;
-import com.example.controller.service.HoKhauService;
-import com.example.controller.service.NhanKhauService;
+import com.example.services.HoKhauService;
 import com.example.model.HoKhau;
 import com.example.model.ThanhVienCuaHo;
 

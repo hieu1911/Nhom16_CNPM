@@ -1,4 +1,4 @@
-package com.example.controller.service;
+package com.example.services;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,13 +33,10 @@ public class HoKhauService {
 	
 	public ResultSet resultSet (String query) {
 		try {
-			Connection connection = MySqlConnection.getMysqlConnection();
+			Connection connection = MySqlConnection.getMySqlConnection();
 	    	Statement stmt  = connection.createStatement();
 	    	rs    = stmt.executeQuery(query);
 	    	
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
