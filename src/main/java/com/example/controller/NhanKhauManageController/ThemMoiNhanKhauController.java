@@ -8,15 +8,11 @@ import java.time.ZoneId;
 import java.util.ResourceBundle;
 import java.util.Date;
 
-import com.example.controller.Controller;
-import com.example.controller.service.NhanKhauService;
-import com.example.main.QuanLyNhanKhau;
+import com.example.services.NhanKhauService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -83,9 +79,9 @@ public class ThemMoiNhanKhauController implements Initializable {
     }
 
     @FXML
-    void xacNhan(ActionEvent event) throws IOException {
+    void xacNhan(ActionEvent event) {
     	if (hoTenTf.getText() == null || namSinhDpk.getValue() == null || soCMTTf.getText() == null || gioiTinhCb.getValue() == null || noiSinhTf.getText() == null || nguyenqQuanTf.getText() == null ||
-    	danTocTf.getText() == null || tonGiaoTf.getText() == null || quocTichTf.getText() == null  || noiThuongTruTf.getText() == null || diaChiHienNayTf.getText() == null ||
+    	danTocTf.getText() == null || tonGiaoTf.getText() == null || quocTichTf.getText() == null || soCMTTf.getText() == null || noiThuongTruTf.getText() == null || diaChiHienNayTf.getText() == null ||
     	trinhDoHocVanTf.getText() == null || trinhDoChuyenMonTf.getText() == null || bietTiengDanTocTf.getText() == null || trinhDoNgoaiNguTf.getText() == null || ngheNghiepTf.getText() == null || noiLamViecTf.getText() == null  ) {
     		Alert alert = new Alert(Alert.AlertType.WARNING);
     		alert.setTitle("cảnh báo");
@@ -97,13 +93,9 @@ public class ThemMoiNhanKhauController implements Initializable {
     		Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
     		Date date1 = Date.from(instant);
     		java.sql.Date dateSql = new java.sql.Date(date1.getTime());
-    		nks.insertNhanKhau(soCMTTf.getText(), hoTenTf.getText(), bietDanhTf.getText(), dateSql,  gioiTinhCb.getValue(), noiSinhTf.getText(), nguyenqQuanTf.getText(), 
+    		nks.insertNhanKhau(Integer.valueOf(soCMTTf.getText()), hoTenTf.getText(), bietDanhTf.getText(), dateSql,  gioiTinhCb.getValue(), noiSinhTf.getText(), nguyenqQuanTf.getText(), 
     				danTocTf.getText(), tonGiaoTf.getText(), quocTichTf.getText(), hoChieuSoTf.getText(), noiThuongTruTf.getText(), diaChiHienNayTf.getText(), 
     				trinhDoHocVanTf.getText(), trinhDoChuyenMonTf.getText(), bietTiengDanTocTf.getText(), trinhDoNgoaiNguTf.getText(), ngheNghiepTf.getText(), noiLamViecTf.getText());
-    		xacNhanBt.getScene().getWindow().hide();
-    		FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("nhan-khau.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
-	        QuanLyNhanKhau.window.setScene(scene);
     	}
     	
     	
