@@ -10,6 +10,7 @@ import com.example.services.HoKhauService;
 import com.example.main.QuanLyNhanKhau;
 import com.example.model.HoKhau;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

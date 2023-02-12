@@ -7,6 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.example.model.KhaiTu;
+import com.example.model.TamTru;
+import com.example.model.TamVang;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +36,8 @@ public class NhanKhauService {
     
 	public ResultSet resultSet (String query) {
 		try {
-			Connection connection = MySqlConnection.getMySqlConnection();
+			Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
+
 	    	Statement stmt  = connection.createStatement();
 	    	rs    = stmt.executeQuery(query);
 	    	
@@ -51,7 +58,8 @@ public class NhanKhauService {
 	}
 	public boolean checkPerson(int id) {
         try {
-            Connection connection = MySqlConnection.getMySqlConnection();
+            Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
+
             String query = "SELECT * FROM ho_khau INNER JOIN thanh_vien_cua_ho ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau"
                         + " WHERE ho_khau.idChuHo = "
                         + id 
@@ -74,7 +82,8 @@ public class NhanKhauService {
     		String bietTiengDanToc, String trinhDoNgoaiNgu, String ngheNghiep, String noiLamViec) {
     	try {
 			
-			Connection connection = MySqlConnection.getMySqlConnection();
+			Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
+
 			String INSERT_QUERY = "INSERT INTO nhan_khau ( hoTen, bietDanh, namSinh, gioiTinh, noiSinh, nguyenQuan, "
 					+ "danToc, tonGiao, quocTich, soHoChieu, noiThuongTru, diaChiHienNay, trinhDoHocVan, TrinhDoChuyenMon,"
 					+ "bietTiengDanToc, trinhDoNgoaiNgu, ngheNghiep, noiLamViec) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -157,7 +166,8 @@ public class NhanKhauService {
     
     public int checkCMT(String cmt) {
         try {
-            Connection connection = MySqlConnection.getMySqlConnection();
+            Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
+
             String query = "SELECT * FROM nhan_khau LEFT JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, cmt);
@@ -176,7 +186,8 @@ public class NhanKhauService {
     
     public void themTamVang(TamVang tamVangModel) {
         try {
-            Connection connection = MySqlConnection.getMySqlConnection();
+            Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
+
             String query = "INSERT INTO tam_vang(idNhanKhau, maGiayTamVang, noiTamTru, tuNgay, denNgay, lyDo)" + " value (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, tamVangModel.getIdNhanKhau());
@@ -201,7 +212,8 @@ public class NhanKhauService {
     
     public void themTamTru(TamTru tamTruModel) {
         try {
-            Connection connection = MySqlConnection.getMySqlConnection();
+            Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
+
             String query = "INSERT INTO tam_tru(idNhanKhau, maGiayTamTru, soDienThoaiNguoiDangKy, tuNgay, denNgay, lyDo)" + " value (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, tamTruModel.getIdNhanKhau());
@@ -248,6 +260,7 @@ public class NhanKhauService {
     		alert.showAndWait();
         }
     }
+
 
     public List<NhanKhauBean> statisticNhanKhau(int TuTuoi, int denTuoi, String gender, String Status, int tuNam, int denNam) {
         List<NhanKhauBean> list = new ArrayList<>();
@@ -357,5 +370,6 @@ public class NhanKhauService {
 
         return list;
     }
+
     
 }

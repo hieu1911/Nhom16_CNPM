@@ -15,6 +15,7 @@ public class HoKhauService {
 
 	public ResultSet getHoKhau() {
 		String query = "SELECT ho_khau.idChuHo, maHoKhau, nhan_khau.hoTen, ho_khau.diaChi, ho_khau.maKhuVuc FROM ho_khau, nhan_khau where ho_khau.idChuHo = nhan_khau.ID ";
+
 		return resultSet(query);
 	}
 
@@ -39,7 +40,7 @@ public class HoKhauService {
 		String query = "select ID from nhan_khau where hoTen = '" + hoTen + "'";
 		return resultSet(query);
 	}
-
+  
 	public ResultSet resultSet (String query) {
 		try {
 			Connection connection = com.example.services.MySqlConnection.getMySqlConnection();
@@ -143,3 +144,4 @@ public class HoKhauService {
 		}
 	}
 }
+
