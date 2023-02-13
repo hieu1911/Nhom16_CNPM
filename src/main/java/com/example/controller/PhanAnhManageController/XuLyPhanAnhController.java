@@ -1,10 +1,11 @@
-package com.example.controller;
+package com.example.controller.PhanAnhManageController;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import com.example.main.QuanLyNhanKhau;
@@ -79,13 +80,12 @@ public class XuLyPhanAnhController implements Initializable {
     
     public void duyetPhanAnh(ActionEvent event) {
     	Button b = (Button) event.getSource();
-    	if (b.getText() == "Duyệt") {
+    	if (Objects.equals(b.getText(), "Duyệt")) {
     		b.setText("Đã duyệt");
     		for (PhanAnh i : phanAnhList) {
-    			if(i.getStatusButton().getText() == "Đã duyệt") {
+				if(Objects.equals(i.getStatusButton().getText(), "Đã duyệt")) {
     				PhanAnhServices conn = new PhanAnhServices();
     				ResultSet rs = conn.updatePhanAnh(i.getID());	
-    				phanAnhList.remove(i);
     			}
     		}
     	}

@@ -72,9 +72,25 @@ public class TrangChuController extends Controller implements Initializable {
             }
             preparedStatement.close();
 
-            tongPhanAnh.setText("124");
-            dangChoDuyet.setText("12");
-            daXuLy.setText("23");
+            query = "SELECT COUNT(*) AS tong FROM phan_anh";
+            preparedStatement = connection.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                tongPhanAnh.setText(String.valueOf(rs.getInt("tong")));
+            }
+            preparedStatement.close();
+
+            query = "SELECT COUNT(*) AS tong FROM phan_anh WHERE status = 'Đã giải quyết'";
+            preparedStatement = connection.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                daXuLy.setText(String.valueOf(rs.getInt("tong")));
+            }
+            preparedStatement.close();
+
+            dangChoDuyet.setText(String.valueOf(Integer.parseInt(tongPhanAnh.getText()) - Integer.parseInt(daXuLy.getText())));
 
             connection.close();
         } catch (Exception e) {
