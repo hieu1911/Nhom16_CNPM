@@ -100,13 +100,6 @@ public class HoKhauController extends Controller implements Initializable {
         Scene scene = new Scene(root);	
 		modal_dialog.setScene(scene);
 		modal_dialog.show();
-//    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/main/them-moi-ho-khau.fxml"));	
-//		root = loader.load();	
-//        Node node = (Node) event.getSource();
-//        stage = (Stage) node.getScene().getWindow();
-//		scene = new Scene(root);
-//		stage.setScene(scene);
-//		stage.show();
     }
     
     public void tachHoKhau(ActionEvent event) throws IOException {

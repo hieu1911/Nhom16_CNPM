@@ -70,7 +70,7 @@ public class PhanAnhController extends Controller implements Initializable{
 		showInfor();
 
 	}
-    
+    @FXML
     void denHoKhau(MouseEvent event) throws IOException {
     	super.denHoKhau();
     }
