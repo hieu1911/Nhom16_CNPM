@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -38,6 +39,8 @@ public class NhanKhauController extends Controller implements Initializable{
 	private Button thongKeBt;
 	@FXML
 	private Button phanAnhBt;
+	@FXML 
+	private TextField searchTf;
 	@FXML
     private TableView<NhanKhau> nhanKhauTv;
 	@FXML
@@ -66,6 +69,33 @@ public class NhanKhauController extends Controller implements Initializable{
 		nhanKhauTv.setItems(nhanKhauList);
 		showInfor();
 	}
+	
+	public void searchNhanKhau(ActionEvent event) {
+		nhanKhauList.clear();
+		if (searchTf.getText().trim().isEmpty()) {
+			showInfor();
+		}
+		NhanKhauService nks = new NhanKhauService();
+		ResultSet rs = nks.getNhanKhauByName(searchTf.getText());
+		try {
+			if (rs != null) {
+				while (rs.next()) {
+					NhanKhau nhanKhau = new NhanKhau();
+					nhanKhau.setID(rs.getInt("ID"));
+					nhanKhau.setHoTen(rs.getString("hoTen"));
+					nhanKhau.setNamSinh(rs.getDate("namSinh"));
+					nhanKhau.setGioiTinh(rs.getString("gioiTinh"));
+					nhanKhau.setDiaChiHienNay(rs.getString("diaChiHienNay"));
+					nhanKhauList.add(nhanKhau);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	public void showInfor() {
     	NhanKhauService conn = new NhanKhauService();

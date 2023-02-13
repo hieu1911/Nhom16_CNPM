@@ -19,7 +19,13 @@ public class HoKhauService {
 
 		return resultSet(query);
 	}
+	
+	public ResultSet getHoKhauByMaHoKhau(String maHoKhau ) {
+		String query = "SELECT ho_khau.ID, ho_khau.idChuHo, maHoKhau, nhan_khau.hoTen, ho_khau.diaChi, ho_khau.maKhuVuc FROM ho_khau, nhan_khau where ho_khau.idChuHo = nhan_khau.ID and maHoKhau = '" + maHoKhau + "'";
 
+		return resultSet(query);
+	}
+	
 	public ResultSet getThanhVien() {
 		String query = "SELECT hoTen, namSinh, thanh_vien_cua_ho.quanHeVoiChuHo FROM nhan_khau, thanh_vien_cua_ho Where thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID ";
 		return resultSet(query);

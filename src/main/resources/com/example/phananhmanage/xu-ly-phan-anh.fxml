@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.controller.PhanAnhManageController.XuLyPhanAnhController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.PhanAnhManageController.XuLyPhanAnhController">
 	<top>
 		<HBox alignment="CENTER" prefHeight="45.0" prefWidth="600.0" BorderPane.alignment="CENTER">
 			<children>
@@ -28,6 +28,7 @@
 				<TableColumn fx:id="hoTenCol" prefWidth="75.0" text="Họ tên" />
 				<TableColumn fx:id="noiDungCol" prefWidth="75.0" text="Nội dung" />
 				<TableColumn fx:id="statusCol" prefWidth="75.0" text="Status" />
+            <TableColumn prefWidth="75.0" fx:id="xoaPaCol" />
 			</columns>
 			<columnResizePolicy>
 				<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

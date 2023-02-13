@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.NhanKhauController">
 	<left>
 		<VBox prefHeight="600.0" prefWidth="200.0" spacing="28.0" style="-fx-background-color: #b6b6b6; -fx-padding: 20 0 0 0">
@@ -73,10 +72,10 @@
 			<center>
 				<TableView fx:id="nhanKhauTv" prefHeight="200.0">
 					<columns>
-						<TableColumn fx:id="idCol" prefWidth="60.0" text="ID" style="-fx-alignment: CENTER"/>
+						<TableColumn fx:id="idCol" prefWidth="60.0" style="-fx-alignment: CENTER" text="ID" />
 						<TableColumn fx:id="hoTenCol" prefWidth="160.0" text="Họ tên" />
                   		<TableColumn fx:id="ngaySinhCol" prefWidth="160.0" text="Ngày sinh" />
-                  		<TableColumn fx:id="gioiTinhCol" prefWidth="100.0" text="Giới tính"/>
+                  		<TableColumn fx:id="gioiTinhCol" prefWidth="100.0" text="Giới tính" />
                   		<TableColumn fx:id="diaChiHienNayCol" prefWidth="400.0" text="Địa chỉ hiện nay" />
 					</columns>
                <columnResizePolicy>
@@ -87,7 +86,7 @@
 			<top>
 				<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 					<children>
-						<TextField prefHeight="40.0" prefWidth="873.0" />
+						<TextField fx:id="searchTf" onAction="#searchNhanKhau" prefHeight="40.0" prefWidth="873.0" promptText="Họ và tên" />
 					</children>
                <padding>
                   <Insets left="5.0" />
@@ -97,10 +96,10 @@
 			<right>
 				<VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
 					<children>
-						<Button fx:id="themMoiBt" prefWidth="92" mnemonicParsing="false" onAction="#themMoi" text="Thêm mới" />
-						<Button fx:id="dKTamVangBt" prefWidth="92" mnemonicParsing="false" onAction="#dkTamVang" text="Đk tạm vắng" />
-						<Button fx:id="dKTamTruBt" prefWidth="92" mnemonicParsing="false" onAction="#dkTamTru" text="ĐK tạm trú" />
-						<Button fx:id="khaiTuBt" prefWidth="92" mnemonicParsing="false" onAction="#khaiTu" text="Khai tử" />
+						<Button fx:id="themMoiBt" mnemonicParsing="false" onAction="#themMoi" prefWidth="92" text="Thêm mới" />
+						<Button fx:id="dKTamVangBt" mnemonicParsing="false" onAction="#dkTamVang" prefWidth="92" text="Đk tạm vắng" />
+						<Button fx:id="dKTamTruBt" mnemonicParsing="false" onAction="#dkTamTru" prefWidth="92" text="ĐK tạm trú" />
+						<Button fx:id="khaiTuBt" mnemonicParsing="false" onAction="#khaiTu" prefWidth="92" text="Khai tử" />
 					</children>
                <padding>
                   <Insets left="5.0" />
