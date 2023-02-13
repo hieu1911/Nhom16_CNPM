@@ -33,7 +33,7 @@
 			<top>
 				<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="978.0" BorderPane.alignment="CENTER">
 					<children>
-						<TextField prefHeight="39.0" prefWidth="873.0" />
+						<TextField fx:id="searchTf" onAction="#searchHoKhau" prefHeight="39.0" prefWidth="873.0" promptText="Mã hộ khẩu" />
 					</children>
 					<padding>
 						<Insets left="5.0" />

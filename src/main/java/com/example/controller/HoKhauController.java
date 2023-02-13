@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.services.HoKhauService;
+import com.example.services.NhanKhauService;
 import com.example.model.HoKhau;
+import com.example.model.NhanKhau;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -43,6 +46,8 @@ public class HoKhauController extends Controller implements Initializable {
     private Button tachHoKhauBt;
 	@FXML
     private Button themMoiHoKhauBt;
+	@FXML
+	private TextField searchTf;
 	@FXML
     private TableView<HoKhau> hoKhauTv;
 	@FXML
@@ -85,6 +90,29 @@ public class HoKhauController extends Controller implements Initializable {
 
     public void denPhanAnh() throws IOException {
     	super.denPhanAnh();
+    }
+    
+    public void searchHoKhau(ActionEvent event) {
+    	hoKhauList.clear();
+		if (searchTf.getText().trim().isEmpty()) {
+			showInfor();
+		}
+		HoKhauService nks = new HoKhauService();
+		ResultSet rs = nks.getHoKhauByMaHoKhau(searchTf.getText());
+		try {
+			if (rs != null) {
+				while (rs.next()) {
+					HoKhau hoKhau = new HoKhau();
+					hoKhau.setMaHoKhau(rs.getString("maHoKhau"));
+					hoKhau.setHoTenChuHo(rs.getString("hoTen"));
+					hoKhau.setDiaChi(rs.getString("diaChi"));
+					hoKhauList.add(hoKhau);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
     }
 	
     public void themMoiHoKhau(ActionEvent event) throws IOException {

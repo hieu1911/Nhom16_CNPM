@@ -87,7 +87,6 @@ public class TachHoKhauController  implements Initializable {
 	private Button huyBoBt;
 
 	private int IDHoKhau;
-	private int idChuHo;
 	private int idNhanKhau;
 	private int idChuHoMoi;
 	private String hoTen1;
@@ -112,7 +111,6 @@ public class TachHoKhauController  implements Initializable {
 			@Override
 			public void handle(MouseEvent event) {
 				nhanKhauList1.clear();
-				idChuHo = chonHoCanTachTv.getSelectionModel().getSelectedItem().getIdChuHo();
 				String hoTenChuHoHienTai = chonHoCanTachTv.getSelectionModel().getSelectedItem().getHoTenChuHo();
 				IDHoKhau = chonHoCanTachTv.getSelectionModel().getSelectedItem().getID();
 				hienThongTinGiaDinh();
@@ -173,6 +171,29 @@ public class TachHoKhauController  implements Initializable {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void searchMaHoKhau(ActionEvent event) {
+		hoKhauCanTachList.clear();
+		if (maHoKhauTf.getText().trim().isEmpty()) {
+			showInfor();
+		}
+		HoKhauService nks = new HoKhauService();
+		ResultSet rs = nks.getHoKhauByMaHoKhau(maHoKhauTf.getText());
+		try {
+			if (rs != null) {
+				while (rs.next()) {
+					HoKhau hoKhau = new HoKhau();
+					hoKhau.setMaHoKhau(rs.getString("maHoKhau"));
+					hoKhau.setHoTenChuHo(rs.getString("hoTen"));
+					hoKhau.setDiaChi(rs.getString("diaChi"));
+					hoKhauCanTachList.add(hoKhau);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 
 	private void hienThongTinGiaDinh() {
@@ -281,7 +302,7 @@ public class TachHoKhauController  implements Initializable {
 			xacNhanBt.getScene().getWindow().hide();
 			//chuyển trang
 			FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("ho-khau.fxml"));
-			Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+			Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
 			QuanLyNhanKhau.window.setScene(scene);
 		}
 	}

@@ -7,12 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import com.example.model.KhaiTu;
-import com.example.model.TamTru;
-import com.example.model.TamVang;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +14,9 @@ import com.example.bean.NhanKhauBean;
 import com.example.model.*;
 
 import com.example.services.MySqlConnection;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 public class NhanKhauService {
@@ -29,8 +26,18 @@ public class NhanKhauService {
     	return resultSet(query);
     }
 	
+	public ResultSet getNhanKhauByName(String hoTen) {
+		String query = "SELECT ID, hoTen, namSinh, gioiTinh, diaChiHienNay FROM nhan_khau WHERE hoTen = '" + hoTen + "'";
+		return resultSet(query);
+	}
+ 	
 	public ResultSet chonChuHoSelect() {
 		String query = "SELECT  chung_minh_thu.soCMT, nhan_khau.ID, hoTen, namSinh, gioiTinh, diaChiHienNay FROM nhan_khau, chung_minh_thu where chung_minh_thu.idNhanKhau = nhan_khau.ID ";
+		return resultSet(query);
+    }
+	
+	public ResultSet chonChuHoSelect(String hoTenChuHo) {
+		String query = "SELECT  chung_minh_thu.soCMT, nhan_khau.ID, hoTen, namSinh, gioiTinh, diaChiHienNay FROM nhan_khau, chung_minh_thu where chung_minh_thu.idNhanKhau = nhan_khau.ID and hoTen = '" + hoTenChuHo + "'";
 		return resultSet(query);
     }
     
@@ -370,6 +377,4 @@ public class NhanKhauService {
 
         return list;
     }
-
-    
 }
