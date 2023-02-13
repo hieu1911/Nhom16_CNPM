@@ -14,11 +14,10 @@
 
 <BorderPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.NhanKhauController">
 	<left>
-		<VBox prefHeight="600.0" prefWidth="215.0" spacing="28.0" style="-fx-background-color: #b6b6b6;">
-			<Button fx:id="trangChuBt" mnemonicParsing="false" onAction="#denTrangChu" prefHeight="70.0" prefWidth="215.0" stylesheets="@../../../css/ButtonStyle.css">
-
+		<VBox prefHeight="600.0" prefWidth="200.0" spacing="28.0" style="-fx-background-color: #b6b6b6; -fx-padding: 20 0 0 0">
+			<Button fx:id="trangChuBt" mnemonicParsing="false" onAction="#denTrangChu" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
 				<graphic>
-					<HBox alignment="CENTER_LEFT" onMouseClicked="#denTrangChu" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+					<HBox onMouseClicked="#denTrangChu" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
 						<ImageView fitHeight="40" fitWidth="40">
 							<Image url="@../../../image/order.png" />
 						</ImageView>
@@ -26,10 +25,9 @@
 					</HBox>
 				</graphic>
 			</Button>
-
-			<Button fx:id="nhanKhauBt" contentDisplay="CENTER" mnemonicParsing="false" onAction="#denNhanKhau" prefHeight="70.0" prefWidth="215.0" stylesheets="@../../../css/ButtonStyle.css">
+			<Button fx:id="nhanKhauBt" mnemonicParsing="false" onAction="#denNhanKhau" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
 				<graphic>
-					<HBox alignment="CENTER_LEFT" onMouseClicked="#denNhanKhau" spacing="12" style="-fx-background-color: linear-gradient(to right, #25a6de, #4382eb); -fx-padding: 12 12 12 12; -fx-cursor: hand">
+					<HBox onMouseClicked="#denNhanKhau" spacing="12" style="-fx-background-color: linear-gradient(to right, #25a6de, #4382eb); -fx-padding: 12 12 12 12; -fx-cursor: hand">
 						<ImageView fitHeight="40" fitWidth="40">
 							<Image url="@../../../image/man.png" />
 						</ImageView>
@@ -37,10 +35,9 @@
 					</HBox>
 				</graphic>
 			</Button>
-
-			<Button fx:id="hoKhauBt" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#denHoKhau" prefHeight="70.0" prefWidth="215.0" stylesheets="@../../../css/ButtonStyle.css">
+			<Button fx:id="hoKhauBt" mnemonicParsing="false" onAction="#denHoKhau" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
 				<graphic>
-					<HBox alignment="CENTER_LEFT" onMouseClicked="#denHoKhau" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+					<HBox onMouseClicked="#denHoKhau" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
 						<ImageView fitHeight="40" fitWidth="40">
 							<Image url="@../../../image/house.png" />
 						</ImageView>
@@ -48,11 +45,9 @@
 					</HBox>
 				</graphic>
 			</Button>
-
-			<Button fx:id="thongKeBt" mnemonicParsing="false" onAction="#denThongKe" prefHeight="70.0" prefWidth="215.0" stylesheets="@../../../css/ButtonStyle.css">
-
+			<Button fx:id="thongKeBt" mnemonicParsing="false" onAction="#denThongKe" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
 				<graphic>
-					<HBox alignment="CENTER_LEFT" onMouseClicked="#denThongKe" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+					<HBox onMouseClicked="#denThongKe" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
 						<ImageView fitHeight="40" fitWidth="40">
 							<Image url="@../../../image/analysis.png" />
 						</ImageView>
@@ -60,11 +55,9 @@
 					</HBox>
 				</graphic>
 			</Button>
-
-			<Button fx:id="phanAnhBt" mnemonicParsing="false" onAction="#denPhanAnh" prefHeight="70.0" prefWidth="215.0" stylesheets="@../../../css/ButtonStyle.css">
-
+			<Button fx:id="phanAnhBt" mnemonicParsing="false" onAction="#denPhanAnh" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
 				<graphic>
-					<HBox alignment="CENTER_LEFT" onMouseClicked="#denPhanAnh" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+					<HBox onMouseClicked="#denPhanAnh" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
 						<ImageView fitHeight="40" fitWidth="40">
 							<Image url="@../../../image/conversation.png" />
 						</ImageView>
