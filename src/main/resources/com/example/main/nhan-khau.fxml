@@ -84,9 +84,9 @@
 				</TableView>
 			</center>
 			<top>
-				<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+				<HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 					<children>
-						<TextField fx:id="searchTf" onAction="#searchNhanKhau" prefHeight="40.0" prefWidth="873.0" promptText="Họ và tên" />
+						<TextField fx:id="searchTf" onAction="#searchNhanKhau" prefHeight="26.0" prefWidth="871.0" promptText="Họ và tên" />
 					</children>
                <padding>
                   <Insets left="5.0" />
