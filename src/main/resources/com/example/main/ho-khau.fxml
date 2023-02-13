@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="591.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.HoKhauController">
+<BorderPane prefHeight="591.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.HoKhauController">
    <center>
       <BorderPane BorderPane.alignment="CENTER">
          <center>
-            <TableView fx:id="hoKhauTv" prefHeight="487.0" prefWidth="395.0">
+            <TableView fx:id="hoKhauTv" prefHeight="360.0" prefWidth="395.0">
                <columns>
                   <TableColumn fx:id="maHoKhauCol" prefWidth="75.0" text="Mã hộ khẩu" />
                   <TableColumn fx:id="tenChuHoCol" prefWidth="75.0" text="Họ tên chủ hộ" />
@@ -25,9 +25,6 @@
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
-               <padding>
-                  <Insets bottom="20.0" />
-               </padding>
             </TableView>
          </center>
          <top>
@@ -47,10 +44,13 @@
                   <Button fx:id="tachHoKhauBt" prefWidth="92" mnemonicParsing="false" onAction="#tachHoKhau" text="tách HK" />
                   <Button fx:id="chuyenDiBt" prefWidth="92" mnemonicParsing="false" onAction="#chuyenDi" text="Chuyển đi" />
                </children>
+               <padding>
+                  <Insets left="8"/>
+               </padding>
             </VBox>
          </right>
          <padding>
-            <Insets left="8" right="8" top="8" bottom="8"/>
+            <Insets left="16" top="16" bottom="16"/>
          </padding>
       </BorderPane>
    </center>

@@ -41,7 +41,7 @@
                        <ImageView fitHeight="40" fitWidth="40">
                            <Image url="@../../../image/house.png" />
                        </ImageView>
-                       <Text style=" -fx-font-size: 24px; -fx-font-weight: bold; " text="Hộ Khẩu" />
+                       <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Hộ Khẩu" />
                    </HBox>
                </graphic>
            </Button>
@@ -61,7 +61,7 @@
                        <ImageView fitHeight="40" fitWidth="40">
                            <Image url="@../../../image/conversation.png" />
                        </ImageView>
-                       <Text style=" -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: white;" text="Phản Ánh" />
+                       <Text style=" -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: white" text="Phản Ánh" />
                    </HBox>
                </graphic>
            </Button>
