@@ -7,7 +7,7 @@ public class PhanAnh {
 	private String hoTen;
 	private String noiDung;
 	private String status;
-	private Button statusButton;
+	private Button statusButton = new Button();
 	
 	
 	public PhanAnh() {
