@@ -86,6 +86,7 @@ public class TachHoKhauController  implements Initializable {
 	@FXML
 	private Button huyBoBt;
 
+	private int IDHoKhau;
 	private int idChuHo;
 	private int idNhanKhau;
 	private int idChuHoMoi;
@@ -113,6 +114,7 @@ public class TachHoKhauController  implements Initializable {
 				nhanKhauList1.clear();
 				idChuHo = chonHoCanTachTv.getSelectionModel().getSelectedItem().getIdChuHo();
 				String hoTenChuHoHienTai = chonHoCanTachTv.getSelectionModel().getSelectedItem().getHoTenChuHo();
+				IDHoKhau = chonHoCanTachTv.getSelectionModel().getSelectedItem().getID();
 				hienThongTinGiaDinh();
 				chuHoHienTaiTf.setText(hoTenChuHoHienTai);
 			}
@@ -158,6 +160,7 @@ public class TachHoKhauController  implements Initializable {
 			if (rs != null) {
 				while (rs.next()) {
 					HoKhau hk = new HoKhau();
+					hk.setID(rs.getInt("ID"));
 					hk.setIdChuHo(rs.getInt("idChuHo"));
 					hk.setMaHoKhau(rs.getString("maHoKhau"));
 					hk.setHoTenChuHo(rs.getString("hoTen"));
@@ -174,15 +177,18 @@ public class TachHoKhauController  implements Initializable {
 
 	private void hienThongTinGiaDinh() {
 		HoKhauService conn = new HoKhauService();
-		ResultSet rs = conn.getGiaDinh(idChuHo);
+		ResultSet rs = conn.getGiaDinh(IDHoKhau);
 		try {
 			if (rs != null) {
 				while (rs.next()) {
 					ThanhVienCuaHo tvch = new ThanhVienCuaHo();
-					tvch.setIdNhanhKhau(rs.getInt("idNhanKhau"));
-					tvch.setHoTen(rs.getString("hoTen"));
+					HoKhauService con = new HoKhauService();
+					ResultSet r = con.getIdByHoTen(rs.getString("hoTen"));
+					r.next();
+					tvch.setIdNhanhKhau(r.getInt("ID"));
+					tvch.setHoTen(rs.getString("hoTen"));				
 					tvch.setNamSinh(rs.getDate("namSinh"));
-					tvch.setQuanHeVoiChuHo(rs.getString("quanHeVoiNhanKhau"));
+					tvch.setQuanHeVoiChuHo(rs.getString("quanHeVoiChuHo"));
 					nhanKhauList1.add(tvch);
 				}
 			}
@@ -228,10 +234,12 @@ public class TachHoKhauController  implements Initializable {
 					idChuHoMoi = idNhanKhau;
 				} else {
 					ThanhVienCuaHo tvch = new ThanhVienCuaHo();
+					tvch.setIdNhanhKhau(idNhanKhau);
 					tvch.setHoTen(hoTen1);
 					tvch.setNamSinh(namSinh1);
 					tvch.setQuanHeVoiChuHo(result.get());
 					nhanKhauList2.add(tvch);
+					
 				}
 			}
 		}
@@ -242,6 +250,7 @@ public class TachHoKhauController  implements Initializable {
 		for (ThanhVienCuaHo i : nhanKhauList2) {
 			if (hoTen2.equals(i.getHoTen())) {
 				nhanKhauList2.remove(i);
+				
 				break;
 			}
 		}
@@ -267,7 +276,8 @@ public class TachHoKhauController  implements Initializable {
 			DataHoKhauMoi.soCMT = null;
 			DataHoKhauMoi.thanhVienCuaHoList = nhanKhauList2;
 			HoKhauService hks = new HoKhauService();
-			hks.tachHoKhau(nhanKhauList2, idChuHoMoi);
+//			hks.tachHoKhau(nhanKhauList2, idChuHoMoi);
+			hks.insertHoKhauMoi();
 			xacNhanBt.getScene().getWindow().hide();
 			//chuyển trang
 			FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("ho-khau.fxml"));
