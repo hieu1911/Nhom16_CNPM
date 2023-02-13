@@ -271,7 +271,7 @@ public class TachHoKhauController  implements Initializable {
 			xacNhanBt.getScene().getWindow().hide();
 			//chuyển trang
 			FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("ho-khau.fxml"));
-			Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+			Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
 			QuanLyNhanKhau.window.setScene(scene);
 		}
 	}

@@ -43,91 +43,69 @@
          <right>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="themMoiHoKhauBt" mnemonicParsing="false" onAction="#themMoiHoKhau" text="Thêm mới" />
-                  <Button fx:id="tachHoKhauBt" mnemonicParsing="false" onAction="#tachHoKhau" text="tách HK" />
-                  <Button fx:id="chuyenDiBt" mnemonicParsing="false" onAction="#chuyenDi" text="Chuyển đi" />
+                  <Button fx:id="themMoiHoKhauBt" prefWidth="92" mnemonicParsing="false" onAction="#themMoiHoKhau" text="Thêm mới" />
+                  <Button fx:id="tachHoKhauBt" prefWidth="92" mnemonicParsing="false" onAction="#tachHoKhau" text="tách HK" />
+                  <Button fx:id="chuyenDiBt" prefWidth="92" mnemonicParsing="false" onAction="#chuyenDi" text="Chuyển đi" />
                </children>
             </VBox>
          </right>
          <padding>
-            <Insets bottom="10.0" />
+            <Insets left="8" right="8" top="8" bottom="8"/>
          </padding>
       </BorderPane>
    </center>
    <left>
-      <VBox prefHeight="591.0" prefWidth="193.0" spacing="28.0" style="-fx-background-color: #b6b6b6;">
-         <children>
-            <Button fx:id="trangChuBt" mnemonicParsing="false" onAction="#denTrangChu" prefHeight="70.0" prefWidth="200.0" stylesheets="@../../../css/ButtonStyle.css">
-               <graphic>
-                  <HBox onMouseClicked="#denTrangChu" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
-                     <children>
-                        <ImageView fitHeight="40" fitWidth="40">
-                           <image>
-                              <Image url="@../../../image/order.png" />
-                           </image>
-                        </ImageView>
-                        <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Trang Chủ" />
-                     </children>
-                  </HBox>
-               </graphic>
-            </Button>
-            <Button fx:id="nhanKhauBt" mnemonicParsing="false" onAction="#denNhanKhau" prefHeight="72.0" prefWidth="201.0" stylesheets="@../../../css/ButtonStyle.css">
-               <graphic>
-                  <HBox onMouseClicked="#denNhanKhau" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand;">
-                     <children>
-                        <ImageView fitHeight="40" fitWidth="40">
-                           <image>
-                              <Image url="@../../../image/man.png" />
-                           </image>
-                        </ImageView>
-                        <Text style=" -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: white" text="Nhân Khẩu" />
-                     </children>
-                  </HBox>
-               </graphic>
-            </Button>
-            <Button fx:id="hoKhauBt" mnemonicParsing="false" onAction="#denHoKhau" prefHeight="70.0" prefWidth="200.0" stylesheets="@../../../css/ButtonStyle.css">
-               <graphic>
-                  <HBox onMouseClicked="#denHoKhau" spacing="12" style="-fx-padding: 12 12 12 12; -fx-background-color: linear-gradient(to right, #25a6de, #4382eb); -fx-cursor: hand;">
-                     <children>
-                        <ImageView fitHeight="40" fitWidth="40">
-                           <image>
-                              <Image url="@../../../image/house.png" />
-                           </image>
-                        </ImageView>
-                        <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Hộ Khẩu" />
-                     </children>
-                  </HBox>
-               </graphic>
-            </Button>
-            <Button fx:id="thongKeBt" mnemonicParsing="false" onAction="#denThongKe" prefHeight="70.0" prefWidth="200.0" stylesheets="@../../../css/ButtonStyle.css">
-               <graphic>
-                  <HBox onMouseClicked="#denThongKe" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
-                     <children>
-                        <ImageView fitHeight="40" fitWidth="40">
-                           <image>
-                              <Image url="@../../../image/analysis.png" />
-                           </image>
-                        </ImageView>
-                        <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Thống Kê" />
-                     </children>
-                  </HBox>
-               </graphic>
-            </Button>
-            <Button fx:id="phanAnhBt" mnemonicParsing="false" onAction="#denPhanAnh" prefHeight="70.0" prefWidth="200.0" stylesheets="@../../../css/ButtonStyle.css">
-               <graphic>
-                  <HBox onMouseClicked="#denPhanAnh" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
-                     <children>
-                        <ImageView fitHeight="40" fitWidth="40">
-                           <image>
-                              <Image url="@../../../image/conversation.png" />
-                           </image>
-                        </ImageView>
-                        <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Phản Ánh" />
-                     </children>
-                  </HBox>
-               </graphic>
-            </Button>
-         </children>
+      <VBox prefHeight="600.0" prefWidth="200.0" spacing="28.0" style="-fx-background-color: #b6b6b6; -fx-padding: 20 0 0 0">
+         <Button fx:id="trangChuBt" mnemonicParsing="false" onAction="#denTrangChu" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+               <HBox onMouseClicked="#denTrangChu" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+                  <ImageView fitHeight="40" fitWidth="40">
+                     <Image url="@../../../image/order.png" />
+                  </ImageView>
+                  <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Trang Chủ" />
+               </HBox>
+            </graphic>
+         </Button>
+         <Button fx:id="nhanKhauBt" mnemonicParsing="false" onAction="#denNhanKhau" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+               <HBox onMouseClicked="#denNhanKhau" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+                  <ImageView fitHeight="40" fitWidth="40">
+                     <Image url="@../../../image/man.png" />
+                  </ImageView>
+                  <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Nhân Khẩu" />
+               </HBox>
+            </graphic>
+         </Button>
+         <Button fx:id="hoKhauBt" mnemonicParsing="false" onAction="#denHoKhau" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+               <HBox onMouseClicked="#denHoKhau" spacing="12" style="-fx-background-color: linear-gradient(to right, #25a6de, #4382eb); -fx-padding: 12 12 12 12; -fx-cursor: hand">
+                  <ImageView fitHeight="40" fitWidth="40">
+                     <Image url="@../../../image/house.png" />
+                  </ImageView>
+                  <Text style=" -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: white" text="Hộ Khẩu" />
+               </HBox>
+            </graphic>
+         </Button>
+         <Button fx:id="thongKeBt" mnemonicParsing="false" onAction="#denThongKe" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+               <HBox onMouseClicked="#denThongKe" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+                  <ImageView fitHeight="40" fitWidth="40">
+                     <Image url="@../../../image/analysis.png" />
+                  </ImageView>
+                  <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Thống Kê" />
+               </HBox>
+            </graphic>
+         </Button>
+         <Button fx:id="phanAnhBt" mnemonicParsing="false" onAction="#denPhanAnh" prefHeight="70.0" prefWidth="300.0" stylesheets="@../../../css/ButtonStyle.css">
+            <graphic>
+               <HBox onMouseClicked="#denPhanAnh" spacing="12" style="-fx-padding: 12 12 12 12; -fx-cursor: hand">
+                  <ImageView fitHeight="40" fitWidth="40">
+                     <Image url="@../../../image/conversation.png" />
+                  </ImageView>
+                  <Text style=" -fx-font-size: 24px; -fx-font-weight: bold;" text="Phản Ánh" />
+               </HBox>
+            </graphic>
+         </Button>
       </VBox>
    </left>
 </BorderPane>

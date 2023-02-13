@@ -21,4 +21,6 @@ module com.example.nhom16_cnpm {
     
     exports com.example.controller.NhanKhauManageController;
     opens com.example.controller.NhanKhauManageController to javafx.fxml;
+    exports com.example.controller.PhanAnhManageController;
+    opens com.example.controller.PhanAnhManageController to javafx.fxml;
 }
