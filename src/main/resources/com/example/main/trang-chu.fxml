@@ -62,94 +62,64 @@
             </graphic>
         </Button>
     </VBox>
-    <VBox spacing="40" style="-fx-padding: 40 40 40 40">
-        <HBox spacing="20">
-            <ImageView>
-                <Image url="@../../../image/people.png"/>
-            </ImageView>
-            <HBox alignment="CENTER">
-                <VBox alignment="CENTER" prefWidth="800" style="-fx-background-radius: 20 0 0 20; -fx-background-color: #46b9ff;">
-                    <Text text="Nhân khẩu trên địa bàn" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: white"/>
+
+    <VBox style="-fx-padding: 40 40 40 40;" spacing="80" alignment="CENTER">
+        <HBox spacing="44">
+            <HBox alignment="CENTER" prefWidth="280" prefHeight="160" spacing="20" style="-fx-border-width: 2; -fx-border-radius: 20; -fx-border-color: #46b9ff;">
+                <ImageView>
+                    <Image url="@../../../image/people.png"/>
+                </ImageView>
+                <VBox alignment="CENTER" spacing="4">
+                    <Text fx:id="tongNhanKhau" style="-fx-font-size: 52px; -fx-font-weight: bold;"/>
+                    <Text text="Nhân khẩu" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
                 </VBox>
-                <VBox alignment="CENTER" prefWidth="160" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #e7e8eb;">
-                    <Text fx:id="tongNhanKhau" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #46b9ff"/>
+            </HBox>
+            <HBox alignment="CENTER" prefWidth="280" prefHeight="160" spacing="20" style="-fx-border-width: 2; -fx-border-radius: 20; -fx-border-color: #af8ffe;">
+                <ImageView>
+                    <Image url="@../../../image/mansion-.png"/>
+                </ImageView>
+                <VBox alignment="CENTER" spacing="4">
+                    <Text fx:id="tongHoKhau" style="-fx-font-size: 52px; -fx-font-weight: bold;"/>
+                    <Text text="Hộ khẩu" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                </VBox>
+            </HBox>
+            <HBox alignment="CENTER" prefWidth="280" prefHeight="160" spacing="20" style="-fx-border-width: 2; -fx-border-radius: 20; -fx-border-color: #3be8b9;">
+                <ImageView>
+                    <Image url="@../../../image/report.png"/>
+                </ImageView>
+                <VBox alignment="CENTER" spacing="4">
+                    <Text fx:id="tongPhanAnh" style="-fx-font-size: 52px; -fx-font-weight: bold;"/>
+                    <Text text="Phản ánh" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
                 </VBox>
             </HBox>
         </HBox>
-        <HBox spacing="20">
-            <ImageView>
-                <Image url="@../../../image/mansion-.png"/>
-            </ImageView>
-            <HBox alignment="CENTER">
-                <VBox alignment="CENTER" prefWidth="800" style="-fx-background-radius: 20 0 0 20; -fx-background-color: #af8ffe;">
-                    <Text text="Hộ khẩu trên địa bàn" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: white"/>
-                </VBox>
-                <VBox alignment="CENTER" prefWidth="160" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #e7e8eb;">
-                    <Text fx:id="tongHoKhau" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #af8ffe"/>
-                </VBox>
-            </HBox>
-        </HBox>
-        <HBox spacing="56">
-            <HBox spacing="16">
+        <HBox spacing="44">
+            <HBox alignment="CENTER" prefWidth="280" prefHeight="160" spacing="20" style="-fx-border-width: 2; -fx-border-radius: 20; -fx-border-color: #fd957b;">
                 <ImageView>
                     <Image url="@../../../image/parasol.png"/>
                 </ImageView>
-                <HBox alignment="CENTER">
-                    <VBox alignment="CENTER" prefWidth="360" style="-fx-background-radius: 20 0 0 20; -fx-background-color: #fd957b;">
-                        <Text text="Tạm trú" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: white"/>
-                    </VBox>
-                    <VBox alignment="CENTER" prefWidth="160" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #e7e8eb;">
-                        <Text fx:id="tamTru" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #fd957b"/>
-                    </VBox>
-                </HBox>
-            </HBox>
-            <HBox spacing="20">
-                <HBox alignment="CENTER">
-                    <VBox alignment="CENTER" prefWidth="360" style="-fx-background-radius: 20 0 0 20; -fx-background-color: #fd957b;">
-                        <Text text="Tạm vắng" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: white"/>
-                    </VBox>
-                    <VBox alignment="CENTER" prefWidth="160" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #e7e8eb;">
-                        <Text fx:id="tamVang" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #fd957b"/>
-                    </VBox>
-                </HBox>
-            </HBox>
-        </HBox>
-        <HBox spacing="20">
-            <ImageView>
-                <Image url="@../../../image/report.png"/>
-            </ImageView>
-            <HBox alignment="CENTER">
-                <VBox alignment="CENTER" prefWidth="800" style="-fx-background-radius: 20 0 0 20; -fx-background-color: #3be8b9;">
-                    <Text text="Số phản ánh trên địa bàn" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: white"/>
-                </VBox>
-                <VBox alignment="CENTER" prefWidth="160" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #e7e8eb;">
-                    <Text fx:id="tongPhanAnh" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #3be8b9"/>
+                <VBox alignment="CENTER" spacing="4">
+                    <Text fx:id="tamVang" style="-fx-font-size: 52px; -fx-font-weight: bold;"/>
+                    <Text text="Tạm vắng" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
                 </VBox>
             </HBox>
-        </HBox>
-        <HBox spacing="56">
-            <HBox spacing="16">
+            <HBox alignment="CENTER" prefWidth="280" prefHeight="160" spacing="20" style="-fx-border-width: 2; -fx-border-radius: 20; -fx-border-color: #25dae7;">
+                <ImageView>
+                    <Image url="@../../../image/rent.png"/>
+                </ImageView>
+                <VBox alignment="CENTER" spacing="4">
+                    <Text fx:id="tamTru" style="-fx-font-size: 52px; -fx-font-weight: bold;"/>
+                    <Text text="Tạm trú" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                </VBox>
+            </HBox>
+            <HBox alignment="CENTER" prefWidth="280" prefHeight="160" spacing="20" style="-fx-border-width: 2; -fx-border-radius: 20; -fx-border-color: #ff6384;">
                 <ImageView>
                     <Image url="@../../../image/file.png"/>
                 </ImageView>
-                <HBox alignment="CENTER">
-                    <VBox alignment="CENTER" prefWidth="360" style="-fx-background-radius: 20 0 0 20; -fx-background-color: #25dae7;">
-                        <Text text="Đang chờ duyệt" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: white"/>
-                    </VBox>
-                    <VBox alignment="CENTER" prefWidth="160" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #e7e8eb;">
-                        <Text fx:id="dangChoDuyet" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #25dae7"/>
-                    </VBox>
-                </HBox>
-            </HBox>
-            <HBox spacing="20">
-                <HBox alignment="CENTER">
-                    <VBox alignment="CENTER" prefWidth="360" style="-fx-background-radius: 20 0 0 20; -fx-background-color: #25dae7;">
-                        <Text text="Đã giải quyết" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: white"/>
-                    </VBox>
-                    <VBox alignment="CENTER" prefWidth="160" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #e7e8eb;">
-                        <Text fx:id="daXuLy" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #25dae7"/>
-                    </VBox>
-                </HBox>
+                <VBox alignment="CENTER" spacing="4">
+                    <Text fx:id="daXuLy" style="-fx-font-size: 52px; -fx-font-weight: bold;"/>
+                    <Text text="Giải quyết" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                </VBox>
             </HBox>
         </HBox>
     </VBox>
