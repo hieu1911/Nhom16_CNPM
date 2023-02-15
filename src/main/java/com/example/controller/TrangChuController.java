@@ -23,8 +23,6 @@ public class TrangChuController extends Controller implements Initializable {
     @FXML
     Text tongPhanAnh;
     @FXML
-    Text dangChoDuyet;
-    @FXML
     Text daXuLy;
 
     public TrangChuController() {
@@ -89,8 +87,6 @@ public class TrangChuController extends Controller implements Initializable {
                 daXuLy.setText(String.valueOf(rs.getInt("tong")));
             }
             preparedStatement.close();
-
-            dangChoDuyet.setText(String.valueOf(Integer.parseInt(tongPhanAnh.getText()) - Integer.parseInt(daXuLy.getText())));
 
             connection.close();
         } catch (Exception e) {
