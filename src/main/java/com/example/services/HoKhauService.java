@@ -39,7 +39,6 @@ public class HoKhauService {
 	}
 
 	public ResultSet getGiaDinh(int id) {
-//		String query = "Select gia_dinh.idNhanKhau, gia_dinh.hoTen, gia_dinh.namSinh, gia_dinh.quanHeVoiNhanKhau from gia_dinh, ho_khau where gia_dinh.idNhanKhau = ho_khau.idChuHo and ho_khau.idChuHo = " + id ;
 		String query = "SELECT * FROM nhan_khau INNER JOIN thanh_vien_cua_ho ON nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau "
                 + "WHERE thanh_vien_cua_ho.idHoKhau = "
                 + id;

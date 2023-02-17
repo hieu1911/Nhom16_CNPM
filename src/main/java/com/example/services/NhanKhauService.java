@@ -30,6 +30,11 @@ public class NhanKhauService {
 		String query = "SELECT ID, hoTen, namSinh, gioiTinh, diaChiHienNay FROM nhan_khau WHERE hoTen = '" + hoTen + "'";
 		return resultSet(query);
 	}
+	
+	public ResultSet getNhanKhauByID(int id) {
+		String query = "SELECT * FROM nhan_khau, chung_minh_thu WHERE chung_minh_thu.idNhanKhau = nhan_khau.ID And nhan_khau.ID = " + id;
+		return resultSet(query);
+	}
  	
 	public ResultSet chonChuHoSelect() {
 		String query = "SELECT  chung_minh_thu.soCMT, nhan_khau.ID, hoTen, namSinh, gioiTinh, diaChiHienNay FROM nhan_khau, chung_minh_thu where chung_minh_thu.idNhanKhau = nhan_khau.ID ";
@@ -55,14 +60,6 @@ public class NhanKhauService {
     	return rs;
 	}
 	
-	// kiểm tra nhân khẩu đã nằm trong hộ khẩu nào chưa
-	public boolean checkInHoKhau (int idNhanKhau) throws SQLException {
-		String query = "SELECT nhan_khau.ID from nhan_khau, thanh_vien_cua_ho where nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau and nhan_khau.ID = " + idNhanKhau;
-		if (resultSet(query).next()) {
-			return false;
-		} else 
-			return true;
-	}
 	public boolean checkPerson(int id) {
         try {
             Connection connection = com.example.services.MySqlConnection.getMySqlConnection();

@@ -8,12 +8,16 @@ import java.util.ResourceBundle;
 
 import com.example.services.HoKhauService;
 import com.example.services.NhanKhauService;
+import com.example.controller.HoKhauManageController.ThongTinHoKhauController;
+import com.example.controller.NhanKhauManageController.ThongTinNhanKhauController;
 import com.example.model.HoKhau;
 import com.example.model.NhanKhau;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -69,7 +73,36 @@ public class HoKhauController extends Controller implements Initializable {
 		diaChiCol.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("diaChi"));
 		hoKhauTv.setItems(hoKhauList);
 		showInfor();
+		
+		hoKhauTv.setOnMousePressed(new EventHandler<Event>() {
 
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				try {					
+					Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			    	FXMLLoader loader = new FXMLLoader();			
+					loader.setLocation(getClass().getResource("/com/example/hokhaumanage/thong-tin-ho-khau.fxml"));			
+					loader.load();
+					Parent root = loader.getRoot();					
+					ThongTinHoKhauController thongTinHoKhau = loader.getController();
+					thongTinHoKhau.setInfor(hoKhauTv.getSelectionModel().getSelectedItem().getMaHoKhau(), 
+							hoKhauTv.getSelectionModel().getSelectedItem().getHoTenChuHo(), 
+							hoKhauTv.getSelectionModel().getSelectedItem().getDiaChi());
+					thongTinHoKhau.hienThongTinGiaDinh(hoKhauTv.getSelectionModel().getSelectedItem().getID());
+					Stage modal_dialog = new Stage(StageStyle.DECORATED);
+			        modal_dialog.initModality(Modality.WINDOW_MODAL);
+			        modal_dialog.initOwner(stage);
+			        modal_dialog.setTitle("Thông tin hộ khẩu");
+			        Scene scene = new Scene(root);	
+					modal_dialog.setScene(scene);
+					modal_dialog.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	public void denTrangChu() throws IOException {
@@ -124,7 +157,7 @@ public class HoKhauController extends Controller implements Initializable {
 		Stage modal_dialog = new Stage(StageStyle.DECORATED);
         modal_dialog.initModality(Modality.WINDOW_MODAL);
         modal_dialog.initOwner(stage);
-        modal_dialog.setTitle("Them moi ho khau");
+        modal_dialog.setTitle("Thêm mới hộ khẩu");
         Scene scene = new Scene(root);	
 		modal_dialog.setScene(scene);
 		modal_dialog.show();
@@ -139,7 +172,7 @@ public class HoKhauController extends Controller implements Initializable {
 		Stage modal_dialog = new Stage(StageStyle.DECORATED);
         modal_dialog.initModality(Modality.WINDOW_MODAL);
         modal_dialog.initOwner(stage);
-        modal_dialog.setTitle("Tach ho khau");
+        modal_dialog.setTitle("Tách hộ khẩu");
         Scene scene = new Scene(root);	
 		modal_dialog.setScene(scene);
 		modal_dialog.show();
@@ -154,7 +187,7 @@ public class HoKhauController extends Controller implements Initializable {
 		Stage modal_dialog = new Stage(StageStyle.DECORATED);
         modal_dialog.initModality(Modality.WINDOW_MODAL);
         modal_dialog.initOwner(stage);
-        modal_dialog.setTitle("Chuyen di");
+        modal_dialog.setTitle("Chuyển đi");
         Scene scene = new Scene(root);	
 		modal_dialog.setScene(scene);
 		modal_dialog.show();
@@ -167,6 +200,7 @@ public class HoKhauController extends Controller implements Initializable {
 			if (rs != null) {
 				while (rs.next()) {
 					HoKhau hoKhau = new HoKhau();
+					hoKhau.setID(rs.getInt("ID"));
 					hoKhau.setMaHoKhau(rs.getString("maHoKhau"));
 					hoKhau.setHoTenChuHo(rs.getString("hoTen"));
 					hoKhau.setDiaChi(rs.getString("diaChi"));
