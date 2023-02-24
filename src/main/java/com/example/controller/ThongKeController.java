@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.bean.NhanKhauBean;
 
+
 import com.example.controller.NhanKhauManageController.ThongTinNhanKhauController;
 import com.example.model.NhanKhau;
 import com.example.services.NhanKhauService;
@@ -21,11 +22,16 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -220,7 +226,27 @@ public class ThongKeController extends Controller implements Initializable {
     
     public void exportCSVFile() {
 
-    	
+    	DateFormat dfm =new  SimpleDateFormat("yyyyMMddHHmmss");
+    	try {
+	        File file = new File("fileExport/" + dfm.format(new java.util.Date()) + ".csv");
+	        FileWriter fw = new FileWriter(file, true);
+	        BufferedWriter writer = new BufferedWriter( fw );
+	        for (NhanKhau i : nhanKhauList) {
+	        	String text = i.toString();
+	            writer.write(text);
+	            writer.newLine();
+	        }
+            Dialog<String> dialog = new Dialog<>();
+            dialog.setTitle("Thông báo");
+            dialog.setContentText("Xuất file thành công!!");
+            ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().add(type);
+            dialog.show();
+	        writer.close();
+	   
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    }	
 	}
 	
 	
