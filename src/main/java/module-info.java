@@ -6,6 +6,7 @@ module com.example.nhom16_cnpm {
 	requires java.sql;
 	requires javafx.graphics;
 	requires javafx.base;
+
     
     opens com.example.main to javafx.fxml;
     exports com.example.main;

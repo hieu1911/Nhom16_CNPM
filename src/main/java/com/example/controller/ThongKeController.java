@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.bean.NhanKhauBean;
+
 import com.example.controller.NhanKhauManageController.ThongTinNhanKhauController;
 import com.example.model.NhanKhau;
 import com.example.services.NhanKhauService;
@@ -27,6 +28,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 public class ThongKeController extends Controller implements Initializable {
     @FXML
@@ -214,5 +216,12 @@ public class ThongKeController extends Controller implements Initializable {
 
         nhanKhauTable.setItems(nhanKhauList);
     }
+    
+    
+    public void exportCSVFile() {
 
+    	
+	}
+	
+	
 }

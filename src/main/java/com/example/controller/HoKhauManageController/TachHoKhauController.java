@@ -297,10 +297,12 @@ public class TachHoKhauController  implements Initializable {
 			DataHoKhauMoi.soCMT = null;
 			DataHoKhauMoi.thanhVienCuaHoList = nhanKhauList2;
 			HoKhauService hks = new HoKhauService();
-//			hks.tachHoKhau(nhanKhauList2, idChuHoMoi);
 			hks.insertHoKhauMoi();
+			
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    		alert.setTitle("Thông báo");
+    		alert.setContentText("Tách hộ khẩu thành công");
 			xacNhanBt.getScene().getWindow().hide();
-			//chuyển trang
 			FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.class.getResource("ho-khau.fxml"));
 			Scene scene = new Scene(fxmlLoader.load(), 1200, 600);
 			QuanLyNhanKhau.window.setScene(scene);
