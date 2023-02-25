@@ -85,7 +85,7 @@ public class ThemMoiNhanKhauController implements Initializable {
     @FXML
     void xacNhan(ActionEvent event) throws IOException {
     	if (hoTenTf.getText() == null || namSinhDpk.getValue() == null || soCMTTf.getText() == null || gioiTinhCb.getValue() == null || noiSinhTf.getText() == null || nguyenqQuanTf.getText() == null ||
-    	danTocTf.getText() == null || tonGiaoTf.getText() == null || quocTichTf.getText() == null || soCMTTf.getText() == null || noiThuongTruTf.getText() == null || diaChiHienNayTf.getText() == null ||
+    	danTocTf.getText() == null || tonGiaoTf.getText() == null || quocTichTf.getText() == null || noiThuongTruTf.getText() == null || diaChiHienNayTf.getText() == null ||
     	trinhDoHocVanTf.getText() == null || trinhDoChuyenMonTf.getText() == null || bietTiengDanTocTf.getText() == null || trinhDoNgoaiNguTf.getText() == null || ngheNghiepTf.getText() == null || noiLamViecTf.getText() == null  ) {
     		Alert alert = new Alert(Alert.AlertType.WARNING);
     		alert.setTitle("cảnh báo");
