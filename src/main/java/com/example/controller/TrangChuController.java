@@ -54,7 +54,7 @@ public class TrangChuController extends Controller implements Initializable {
             }
             preparedStatement.close();
 
-            query = "SELECT COUNT(*) AS tong FROM tam_tru WHERE denNgay < NOW()";
+            query = "SELECT COUNT(*) AS tong FROM tam_tru WHERE denNgay > NOW()";
             preparedStatement = connection.prepareStatement(query);
             rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -62,7 +62,7 @@ public class TrangChuController extends Controller implements Initializable {
             }
             preparedStatement.close();
 
-            query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < NOW()";
+            query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay > NOW()";
             preparedStatement = connection.prepareStatement(query);
             rs = preparedStatement.executeQuery();
             while (rs.next()){
